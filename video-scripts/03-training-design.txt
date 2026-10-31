@@ -1,0 +1,29 @@
+Module 3. Designing training from the game model.
+
+A session plan on its own proves very little. What assessors look for is a thread: one unbroken line from the game model to the next match. This module follows one full loop of that thread from the Harbor FC season.
+
+The thread has six steps. First, a principle from the game model. Second, evidence from a match. Third, a session objective. Fourth, the practices. Fifth, a review of the coaching. Sixth, a measure to check in the next match.
+
+Step one. The principle is from transition to defend: the five-second counter-press.
+
+Step two. Against Westside Academy, Harbor won the ball back within five seconds after only six of its forty-one losses of possession. That is fifteen percent. Worse, Westside's first pass after winning the ball found a runner behind Harbor's midfield three times.
+
+Step three. The session objective follows directly: win the ball back within five seconds of losing it, with the nearest player pressing and the next two cutting passing lanes.
+
+Step four. The session lasts eighty minutes and has four practices, each one keeping the moment of losing the ball.
+
+The first practice is a rondo with a re-press rule, fifteen minutes. Two grids of twelve by twelve metres, five against two. When a defender wins the ball, the player who lost it and his nearest teammate become the new defenders. Without that rule, a rondo trains possession, not transition.
+
+The second practice is a possession game, six against six with three neutrals, in a thirty-five by thirty area, for twenty minutes. A team scores a point for eight passes, or for winning the ball back within five seconds of losing it.
+
+The third is eight against eight to two full-size goals on half a pitch, for twenty-five minutes. A goal scored within ten seconds of winning the ball counts double.
+
+The fourth is a free game, nine against nine on three-quarters of a pitch, for twenty minutes. No stoppages, only short cues while play continues. This game shows whether the learning transfers.
+
+These practices use a constraints-led approach. Instead of telling players the answer, the coach changes the practice so the behaviour happens more often. There are three kinds of constraint. Task constraints are what the practice asks: area size, numbers, rules and scoring. Environmental constraints are the world around the practice: surface, weather, noise and team culture. Individual constraints are what each player brings: height, maturity, fitness, skill and confidence.
+
+A common mistake is to call pitch size an environmental constraint. It is a task constraint. Another is changing several constraints at once, so the coach cannot tell which one made the difference.
+
+The practices are also representative. They keep the information players use in matches: direction, opponents, teammates and real decisions. A pattern run without opponents may look tidy, but it rarely transfers to a match.
+
+Steps five and six close the loop: Freddy films the session and reviews his own coaching, which is the subject of module four, and then he checks the counter-press measure in the next match. The next match produces new evidence, and the thread continues.

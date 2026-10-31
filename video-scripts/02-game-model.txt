@@ -1,0 +1,25 @@
+Module 2. Building the game model.
+
+Everything in the B course connects back to one document: the game model. It describes how a team wants to play in every moment of the game. Sessions, game plans, player plans and performance measures all link back to it. Assessors follow that link.
+
+A game model covers five moments. In possession. Out of possession. Transition to defend, the moment the ball is lost. Transition to attack, the moment the ball is won. And set pieces.
+
+For each moment, the coach writes principles. A principle is a behaviour the team wants to see, written so it can be trained and measured. Three or four principles per moment is plenty. Players cannot act on twenty.
+
+Here is the Harbor FC U17 game model. It starts with an identity: brave on the ball, aggressive without it, ruthless in transition. Players who make decisions, not players who wait for instructions. The base shape is a four-three-three.
+
+In possession, there are four principles. Build with a plus-one, meaning always one more player than the opponent's first line of pressure. Find the free player between the lines. Attract to release: draw pressure on one side, then switch quickly to the other. And arrive in the box with numbers.
+
+Out of possession, there are three. Compact and narrow, protecting the middle first. Press on triggers, such as a backward pass, a poor first touch, or a receiver facing his own goal. And defend forward: when the team presses, the back line steps up together.
+
+In transition to defend, there are two. First, a five-second counter-press. The nearest player attacks the ball immediately, and the next two cut the closest passing lanes. Second, if the press is broken, recover centrally, toward the goal, not toward the ball.
+
+In transition to attack, the first look is forward. If the team can play past the opponent's shape in one or two passes, it goes. If not, it secures the ball and rebuilds.
+
+For set pieces, Harbor defends corners with a mixed system: zonal at the near post and in the six-yard box, man-to-man on the opponent's two best headers. In attack, it has two corner routines.
+
+Notice the difference between a game model and a game plan. The game model stays the same all season. A game plan adapts it to one opponent, on one day. If the plan changes the team's identity every week, players get a new team every week.
+
+Two tests help when writing principles. First, can you design a practice for it? Second, can you measure it in a match? If the answer to either is no, rewrite the principle.
+
+Finally, practise explaining the game model out loud in two minutes. The app builds a two-minute pitch from the principles. Say it, then add one real example from a match for the principle you name as most important. That combination, a clear model and a real example, is what assessors listen for.

@@ -1,0 +1,27 @@
+Module 7. Performance analysis.
+
+Analysis in the B course is not about collecting as many numbers as possible. It is about measuring whether the team plays the way the game model says it should, and then changing training because of it.
+
+A key performance indicator, or KPI, should measure one game-model principle directly. Possession percentage is a poor KPI for most principles, because it says nothing about how the team uses the ball or wins it back.
+
+Here are four Harbor FC KPIs, each linked to a principle, with the result against Westside Academy and a target.
+
+For the five-second counter-press, the KPI is regains within five seconds of losing the ball. It is defined as the share of open-play losses where Harbor wins the ball back within five seconds. Against Westside it was six out of forty-one, fifteen percent. The target is thirty percent.
+
+For finding the free player between the lines, the KPI is completed line-breaking passes. A line-breaking pass goes past one of the opponent's defensive lines to a teammate behind it. Against Westside there were fourteen. The target is twenty.
+
+For arriving in the box with numbers, the KPI is box entries with three or more Harbor players arriving within three seconds. Against Westside there were five. The target is eight.
+
+For pressing on triggers, the KPI is PPDA in the opponent's half. PPDA means passes allowed per defensive action: the opponent's passes divided by Harbor's defensive actions in that zone. A lower number means more intense pressing. Against Westside it was eleven point two. The target is under nine.
+
+These figures are examples from the course scenario. They are used consistently across the course so the diagrams, the app and the videos all match.
+
+Using KPIs well takes four steps. First, define each event in writing before anyone codes a match. Without written definitions, two analysts watching the same footage will count different things. Checking that two coders get the same result is called inter-rater reliability. Second, code at least two matches from video, ideally with a second coder. Third, read the trend across matches and the context of each match. One match is noisy. A single drop in pass completion might reflect the weather, the pitch or the opponent. Fourth, change training. Pick the weakest KPI and make it next week's session topic.
+
+It also helps to separate process measures from outcome measures. Goals and points are outcomes, and they are noisy in single matches. Controlled entries into the box or regains within five seconds are process measures. They show how the team plays and tend to predict outcomes over time.
+
+Numbers and video should challenge each other. If the data says the team presses well, but the video shows players jogging after losing the ball, check how the metric is defined.
+
+When presenting analysis to players, show a few clips linked to one or two principles, with a mix of what to repeat and what to fix. An hour of footage teaches nothing.
+
+Analysis only counts as evidence when it changes what the coach does next.

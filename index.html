@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coaching License Lab — Route to the A License</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --board:#F2F4F1; --panel:#FFFFFF; --ink:#17202A; --ink-2:#4B5663; --ink-3:#77828E;
+  --rule:#D5DBDF; --rule-2:#E8ECEE;
+  --frame:#1D2A36; --frame-ink:#DCE3EA; --frame-ink-2:#8E9FAF; --frame-hover:rgba(255,255,255,.07);
+  --blue:#2353C4; --blue-ink:#FFFFFF; --blue-soft:#E4EBFA;
+  --red:#CC3A2C; --red-soft:#FBE6E3;
+  --amber:#E09E14; --amber-soft:#FBF0D5;
+  --ok:#2C7A4B; --ok-soft:#E0F0E6;
+  --pitch:#2E7A4D; --pitch-2:#2A7147; --pline:rgba(255,255,255,.82);
+  --shadow:0 1px 2px rgba(23,32,42,.05),0 6px 18px rgba(23,32,42,.06);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --board:#10161D; --panel:#18212B; --ink:#E6EBEF; --ink-2:#AAB5BF; --ink-3:#7F8B96;
+  --rule:#2B3743; --rule-2:#222C37;
+  --frame:#0B1016; --frame-ink:#D9E1E8; --frame-ink-2:#7D8D9C; --frame-hover:rgba(255,255,255,.06);
+  --blue:#7398F2; --blue-ink:#0B1220; --blue-soft:#1C2A47;
+  --red:#F0705F; --red-soft:#3A1F1C; --amber:#F0B84A; --amber-soft:#3A2F17;
+  --ok:#5DBB86; --ok-soft:#17311F; --pitch:#22603C; --pitch-2:#1F5836; --pline:rgba(255,255,255,.7);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --board:#10161D; --panel:#18212B; --ink:#E6EBEF; --ink-2:#AAB5BF; --ink-3:#7F8B96;
+  --rule:#2B3743; --rule-2:#222C37;
+  --frame:#0B1016; --frame-ink:#D9E1E8; --frame-ink-2:#7D8D9C; --frame-hover:rgba(255,255,255,.06);
+  --blue:#7398F2; --blue-ink:#0B1220; --blue-soft:#1C2A47;
+  --red:#F0705F; --red-soft:#3A1F1C; --amber:#F0B84A; --amber-soft:#3A2F17;
+  --ok:#5DBB86; --ok-soft:#17311F; --pitch:#22603C; --pitch-2:#1F5836; --pline:rgba(255,255,255,.7);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--board);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.cond{font-family:'Barlow Condensed','Arial Narrow',system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
+img,svg{max-width:100%}
+
+/* shell */
+.shell{display:flex;min-height:100vh}
+.side{width:248px;flex-shrink:0;background:var(--frame);color:var(--frame-ink);position:sticky;top:0;height:100vh;overflow-y:auto;padding:26px 0 24px;display:flex;flex-direction:column}
+.brand{padding:0 24px 20px}
+.brand .mark{display:flex;align-items:center;gap:10px}
+.brand .mag{width:30px;height:30px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;font-size:15px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.brand .name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:23px;line-height:1;letter-spacing:.2px}
+.brand .who{font-size:13px;color:var(--frame-ink-2);margin-top:10px;line-height:1.4}
+.navgrp{font-size:12.5px;color:var(--frame-ink-2);padding:16px 26px 6px;font-weight:600}
+.nav{list-style:none;padding:0 12px}
+.nav button{width:100%;text-align:left;background:none;border:0;color:var(--frame-ink);font-size:15px;font-weight:500;padding:8px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:10px}
+.nav button:hover{background:var(--frame-hover)}
+.nav button .dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--frame-ink-2);flex-shrink:0}
+.nav button.on{background:rgba(255,255,255,.1);color:#fff;font-weight:600}
+.nav button.on .dot{background:var(--amber);border-color:var(--amber)}
+.side-foot{margin-top:auto;padding:18px 26px 0;font-size:12.5px;color:var(--frame-ink-2);line-height:1.45}
+.side-foot button{background:none;border:1px solid rgba(255,255,255,.18);color:var(--frame-ink);border-radius:7px;padding:6px 12px;cursor:pointer;margin-bottom:12px;font-size:13.5px}
+.main{flex:1;min-width:0}
+.topbar{display:none;position:sticky;top:0;z-index:30;background:var(--frame);color:#fff;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top,0px));align-items:center;justify-content:space-between}
+.topbar .name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px}
+.burger{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 12px;font-size:15px;cursor:pointer}
+.content{max-width:1000px;margin:0 auto;padding:40px 44px 90px}
+#content:focus{outline:none}
+.scrim{display:none}
+
+/* type */
+h1.page{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46px;line-height:1;letter-spacing:-.3px;margin-bottom:12px}
+.lede{font-size:17.5px;color:var(--ink-2);max-width:66ch;margin-bottom:28px}
+h2.sec{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:27px;line-height:1.1;margin:38px 0 12px}
+h3{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:6px}
+p{max-width:72ch}
+.muted{color:var(--ink-2)}
+.small{font-size:14px}
+.tiny{font-size:12.5px;color:var(--ink-3)}
+a{color:var(--blue)}
+
+/* surfaces */
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+.panel + .panel{margin-top:14px}
+.grid2>*,.grid3>*,.grid4>*,.split>*,.row>*{margin-top:0!important}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.flat{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.split{display:grid;grid-template-columns:240px minmax(0,1fr);gap:14px;align-items:start}
+.printonly{display:none}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.between{justify-content:space-between}
+.stack>*+*{margin-top:12px}
+.note{border-left:3px solid var(--amber);background:var(--amber-soft);padding:12px 16px;border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink)}
+.note.blue{border-color:var(--blue);background:var(--blue-soft)}
+.note.red{border-color:var(--red);background:var(--red-soft)}
+
+/* controls */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--blue);background:var(--blue);color:var(--blue-ink);font-weight:600;font-size:15px;padding:9px 16px;border-radius:999px;cursor:pointer;line-height:1.2}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--ink-3)}
+.btn.sm{font-size:13.5px;padding:6px 12px}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--panel);border-radius:999px;padding:5px 12px;font-size:13.5px;cursor:pointer;font-weight:500}
+.chip.on{background:var(--ink);color:var(--board);border-color:var(--ink)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--rule-2);color:var(--ink-2)}
+.tag.blue{background:var(--blue-soft);color:var(--blue)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.amber{background:var(--amber-soft);color:#8a5d00}
+:root[data-theme="dark"] .tag.amber{color:var(--amber)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag.amber{color:var(--amber)}}
+label.f{display:block;font-size:13.5px;font-weight:600;color:var(--ink-2);margin-bottom:5px}
+.in,select.in,textarea.in{width:100%;background:var(--board);border:1px solid var(--rule);border-radius:8px;padding:9px 11px;font-size:15px;line-height:1.4}
+textarea.in{resize:vertical;min-height:70px}
+.in:focus{outline:2px solid var(--blue);outline-offset:0;border-color:transparent}
+.field{margin-bottom:12px}
+.check{display:flex;gap:11px;align-items:flex-start;padding:8px 0;cursor:pointer;font-size:15px;line-height:1.4}
+.check input{appearance:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--ink-3);flex-shrink:0;margin-top:1px;cursor:pointer;display:grid;place-items:center;background:var(--panel)}
+.check input:checked{background:var(--blue);border-color:var(--blue);box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.check input:checked::after{content:"";width:6px;height:6px;border-radius:50%;background:#fff}
+.check.done span{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--rule)}
+
+/* bars */
+.bar{height:8px;background:var(--rule-2);border-radius:99px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--blue);border-radius:99px}
+.bar.ok>i{background:var(--ok)}
+.bar.amber>i{background:var(--amber)}
+.bar.red>i{background:var(--red)}
+
+/* pitch */
+.pitchwrap{background:var(--pitch);border-radius:14px;padding:10px;box-shadow:var(--shadow);position:relative}
+.pitchwrap svg{display:block;width:100%;height:auto}
+.mag-c{cursor:pointer}
+.mag-c:focus{outline:none}
+.mag-c:focus-visible circle.body{stroke:var(--amber);stroke-width:1.2}
+@keyframes pulse{0%{r:3.6;opacity:.9}100%{r:7;opacity:0}}
+.pulse{animation:pulse 1.8s ease-out infinite}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none;opacity:.5}}
+
+/* tables */
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:14.5px}
+table.t th,table.t td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+table.t th{font-weight:600;color:var(--ink-2);font-size:13.5px}
+
+/* quiz */
+.opt{display:block;width:100%;text-align:left;background:var(--panel);border:1.5px solid var(--rule);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15.5px;line-height:1.4}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.opt:disabled{cursor:default}
+.card-flip{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;padding:30px}
+.card-flip .term{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38px;line-height:1.05}
+.card-flip .def{font-size:17px;max-width:52ch}
+
+/* logger */
+.logbtns{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.logbtn{border:1.5px solid var(--rule);background:var(--panel);border-radius:12px;padding:14px 12px;cursor:pointer;text-align:left;font-weight:600;font-size:15px;line-height:1.2;touch-action:manipulation}
+.logbtn b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;line-height:1;margin-bottom:4px}
+.logbtn:active{transform:scale(.98);border-color:var(--blue)}
+.clock{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:54px;line-height:1;font-variant-numeric:tabular-nums}
+.score{display:flex;gap:6px}
+.score button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--rule);background:var(--panel);cursor:pointer;font-weight:700}
+.score button.on{background:var(--blue);border-color:var(--blue);color:var(--blue-ink)}
+
+/* list items */
+.item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule-2)}
+.item:last-child{border-bottom:0}
+.sel-list button{display:block;width:100%;text-align:left;background:none;border:1px solid transparent;border-radius:9px;padding:10px 12px;cursor:pointer}
+.sel-list button:hover{background:var(--rule-2)}
+.sel-list button.on{border-color:var(--blue);background:var(--blue-soft)}
+.phase{border:1px solid var(--rule);border-radius:10px;padding:14px;margin-bottom:12px;background:var(--board)}
+.week{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--panel)}
+.week.now{border-color:var(--amber);box-shadow:0 0 0 2px var(--amber-soft)}
+.week h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;margin-bottom:2px}
+.weeks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mom-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.principle{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid var(--rule-2)}
+.principle .n{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;color:var(--blue);line-height:1.6}
+.xbtn{background:none;border:0;color:var(--ink-3);cursor:pointer;font-size:20px;line-height:1;padding:6px}
+.xbtn:hover{color:var(--red)}
+/* learn */
+.video{position:relative;aspect-ratio:16/9;background:var(--frame);border-radius:10px;overflow:hidden}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--frame-ink);text-align:center;padding:20px}
+.video-empty b{font-family:'Barlow Condensed',sans-serif;font-size:26px}
+.points{padding-left:20px}.points li{margin:6px 0;max-width:72ch}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.thumb{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:8px;cursor:pointer;text-align:left;font-weight:600;font-size:14.5px}
+.thumb img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:var(--rule-2);margin-bottom:6px}
+.thumb:hover{border-color:var(--blue)}
+.figthumb{display:flex;gap:12px;align-items:center;width:100%;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:8px;cursor:pointer;text-align:left;margin-bottom:20px}
+.figthumb img{width:120px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:var(--rule-2);flex-shrink:0}
+.figthumb span{display:flex;flex-direction:column;font-size:15px}
+.figthumb:hover{border-color:var(--blue)}
+.lb{position:fixed;inset:0;background:rgba(8,12,16,.97);z-index:100;display:none;align-items:center;justify-content:center;padding:calc(56px + env(safe-area-inset-top,0px)) 64px calc(24px + env(safe-area-inset-bottom,0px))}
+.lb.open{display:flex}
+.lb figure{max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center}
+.lb img{max-width:100%;max-height:calc(100vh - 130px);border-radius:6px;background:#fff}
+.lb figcaption{color:#dfe5ea;margin-top:10px;font-size:15px;text-align:center}
+.lb figcaption a{color:#9fb8f5;margin-left:10px}
+.lb-x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;font-weight:600}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);color:#fff;border:0;width:46px;height:46px;border-radius:50%;font-size:28px;line-height:1;cursor:pointer}
+.lb-prev{left:10px}.lb-next{right:10px}
+@media (max-width:900px){.lb{padding-left:8px;padding-right:8px}.lb-nav{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:none}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--board);padding:10px 18px;border-radius:999px;font-size:14.5px;font-weight:600;opacity:0;transition:all .2s;pointer-events:none;z-index:99}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:900px){
+  .side{position:fixed;left:0;top:0;z-index:50;transform:translateX(-100%);transition:transform .2s;padding-top:calc(26px + env(safe-area-inset-top,0px))}
+  .side.open{transform:none}
+  .scrim.open{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:45}
+  .topbar{display:flex}
+  .content{padding:26px 18px 80px}
+  h1.page{font-size:36px}
+  .grid2,.grid3,.weeks,.split{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+}
+@media print{
+  .side,.topbar,.noprint{display:none!important}
+  body{background:#fff;color:#000}
+  .content{padding:0;max-width:none}
+  .panel{box-shadow:none;border-color:#bbb}
+  .printonly{display:block}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side" id="side">
+    <div class="brand">
+      <div class="mark"><div class="mag" id="brandInit">FA</div><div class="name">Coaching<br>License Lab</div></div>
+      <div class="who" id="brandWho"></div>
+    </div>
+    <div id="navWrap"></div>
+    <div class="side-foot">
+      <button onclick="go('settings')">Settings</button>
+      <div>Aligned to the U.S. Soccer pathway. Confirm requirements in the Learning Center before each step.</div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim" onclick="closeNav()"></div>
+  <div class="main">
+    <div class="topbar"><button class="burger" onclick="openNav()" aria-label="Open menu">Menu</button><div class="name">Coaching License Lab</div><div style="width:58px"></div></div>
+    <main class="content" id="content" tabindex="-1"></main>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+/* ============================================================
+   CONFIG — edit these for the coach. Everything else adapts.
+   ============================================================ */
+const CONFIG = {
+  coachName: "Freddy Adu",
+  background: "Former U.S. Men's National Team international and professional player",
+  aTrack: "Senior",            // "Senior" or "Youth"
+  courseStart: "2027-01-11",   // first Monday of the B course (YYYY-MM-DD)
+  team: "Harbor FC U17",       // the scenario team used in diagrams and videos
+  storageKey: "coachlab-v1",
+  // YouTube video IDs (unlisted, not private, so they play inside the page). Leave "" until a video is approved.
+  videos: {1:"", 2:"", 3:"", 4:"", 5:"", 6:"", 7:"", 8:""}
+};
+
+/* ---------- Competency domains ---------- */
+const DOMAINS = {
+  lead:     {name:"Leadership",          blurb:"Environment, communication, staff and player relationships, self-reflection."},
+  train:    {name:"Coaching training",   blurb:"Session design linked to the game model, interventions, adapting in the moment."},
+  game:     {name:"Coaching games",      blurb:"Game model, game plans, in-game coaching, half-time, post-match review."},
+  player:   {name:"Player development",  blurb:"Individual plans, growth and maturation, long-term development."},
+  analysis: {name:"Performance analysis",blurb:"KPIs linked to the game model, coding, video, using evidence to change training."}
+};
+const QDOMAINS = Object.assign({}, DOMAINS, {safe:{name:"Laws & safeguarding",blurb:"Laws of the Game, SafeSport, concussion and heading guidance."}});
+
+/* ---------- Route milestones (pitch hero) ---------- */
+const MILESTONES = [
+  {id:"waiver", label:"Waiver",    title:"Waiver into the B course", x:10, y:34,
+   hint:"Use playing-career proof to request a waiver of the C License prerequisite.",
+   checks:["Learning Center profile created","Playing record compiled: clubs, seasons, senior international caps","Supporting letters or federation confirmation gathered","Waiver request submitted, following the Waiver Process FAQs","Host confirms a place on a B course"]},
+  {id:"ready",  label:"Ready",     title:"Compliance and team access", x:22, y:15,
+   hint:"Paperwork and a team to coach for the full course.",
+   checks:["SafeSport training current","Background screening completed per host and club rules","U13+ team playing 11v11 secured for all 24 weeks","Filming kit: phone or camera, tripod, lapel mic","Club agrees to filmed sessions and matches, with consents in place"]},
+  {id:"b1",     label:"B wk 1–12", title:"B course, first half", x:34, y:48,
+   hint:"Game model, training design and the first filmed sessions.",
+   checks:["Game model v1 written and shared with staff","Four session plans linked to game-model principles","Two sessions filmed and self-reviewed","First in-person meeting attended"]},
+  {id:"b2",     label:"B wk 13–24",title:"B course, second half", x:46, y:18,
+   hint:"Game coaching, player plans, analysis and the final assessments.",
+   checks:["Four game plans with post-match reviews","Three player development plans with a review cycle","Two matches coded against KPIs","Mock assessment interviews rehearsed","Second in-person meeting and final assessments"]},
+  {id:"blic",   label:"B License", title:"B License awarded", x:58, y:46,
+   hint:"Check the license appears in the Learning Center profile.",
+   checks:["License visible in the Learning Center profile"]},
+  {id:"hold",   label:"12 months", title:"Hold the B for 12 months", x:70, y:17,
+   hint:"Keep coaching in a performance environment and bank A-level evidence.",
+   checks:["Coaching in a performance environment all year","Game model v2 updated from a full season","Evidence library organised by competency"]},
+  {id:"aapp",   label:"A apply",   title:"Apply for the A course", x:83, y:47,
+   hint:"Choose Youth or Senior, confirm eligibility, apply.",
+   checks:["A track chosen (Youth or Senior)","Eligibility confirmed: B held 12+ months, team environment qualifies","Application submitted"]},
+  {id:"alic",   label:"A License", title:"A License", x:100, y:34, hint:"The goal.", checks:[]}
+];
+
+/* ---------- Game model moments ---------- */
+const MOMENTS = {
+  poss:{name:"In possession"}, out:{name:"Out of possession"},
+  ttd:{name:"Transition to defend"}, tta:{name:"Transition to attack"}, set:{name:"Set pieces"}
+};
+const FORMATIONS = {
+  "4-3-3":[[6,34,"GK"],[26,10,"LB"],[22,26,"CB"],[22,42,"CB"],[26,58,"RB"],[40,34,"6"],[47,21,"8"],[47,47,"8"],[75,11,"LW"],[81,34,"9"],[75,57,"RW"]],
+  "4-2-3-1":[[6,34,"GK"],[26,10,"LB"],[22,26,"CB"],[22,42,"CB"],[26,58,"RB"],[40,26,"6"],[40,42,"8"],[64,12,"LW"],[62,34,"10"],[64,56,"RW"],[82,34,"9"]],
+  "3-4-3":[[6,34,"GK"],[24,18,"CB"],[21,34,"CB"],[24,50,"CB"],[48,8,"LWB"],[44,27,"8"],[44,41,"6"],[48,60,"RWB"],[74,16,"LW"],[82,34,"9"],[74,52,"RW"]],
+  "4-4-2":[[6,34,"GK"],[26,10,"LB"],[22,26,"CB"],[22,42,"CB"],[26,58,"RB"],[50,10,"LM"],[46,27,"CM"],[46,41,"CM"],[50,58,"RM"],[78,27,"9"],[78,41,"9"]]
+};
+
+/* ---------- Seed data (demo) ---------- */
+const SEED = {
+  model:{
+    identity:"Brave on the ball, aggressive without it, ruthless in transition. We want players who make decisions, not players who wait for instructions.",
+    formation:"4-3-3",
+    moments:{
+      poss:[
+        {t:"Build with a plus-one",d:"Always one more player than their first line of pressure. The 6 drops or a full-back tucks to create it."},
+        {t:"Find the free player between the lines",d:"Scan before receiving. The 8s and wingers start in the half-spaces, ready to receive on the half-turn."},
+        {t:"Attract to release",d:"Draw pressure on one side with short combinations, then switch quickly to the far side."},
+        {t:"Arrive in the box with numbers",d:"Five lanes occupied in the final third. Three players in the box when the ball goes wide."}
+      ],
+      out:[
+        {t:"Compact and narrow",d:"Protect the middle first. Short distances between the lines; show the opponent wide."},
+        {t:"Press on triggers",d:"Backward pass, poor first touch, receiver facing own goal, ball to the full-back near the touchline."},
+        {t:"Defend forward",d:"When we press, the back line steps up together. No one hides behind the press."}
+      ],
+      ttd:[
+        {t:"Five-second counter-press",d:"Nearest player attacks the ball immediately; the next two cut the closest passing lanes."},
+        {t:"Recover centrally if the press is broken",d:"Sprint back inside the ball line, toward the goal, not toward the ball."}
+      ],
+      tta:[
+        {t:"First look forward",d:"Can we play past their shape in one or two passes? If yes, go."},
+        {t:"Secure, then rebuild",d:"If the forward option isn't there, keep the ball and reset our structure."}
+      ],
+      set:[
+        {t:"Defending corners: mixed",d:"Zonal at the near post and six-yard box, man-to-man on their two best headers."},
+        {t:"Attacking corners: two routines",d:"One near-post flick, one short corner to draw a marker out."}
+      ]
+    }
+  },
+  sessions:[{
+    id:"s1", title:"Counter-press after loss", date:"", age:"U17", players:"16 + 2 GK", mins:80,
+    link:"ttd:0", objective:"Win the ball back within five seconds of losing it, with the nearest player pressing and the next two cutting passing lanes.",
+    problem:"Last match: after losing the ball in midfield we turned and jogged back. Their first pass found a runner behind us three times.",
+    phases:[
+      {name:"Activation: rondo with re-press",mins:15,org:"Two 5v2 rondos in 12×12 grids. When a defender wins the ball, the player who lost it and their nearest teammate become the new defenders.",cues:"Closest player attacks the ball within two seconds. Body shape cuts the nearest pass."},
+      {name:"Possession game: 6v6+3",mins:20,org:"35×30 area, three neutrals. A team scores a point for eight passes, or for winning the ball back within five seconds of losing it.",cues:"Second and third players cut lanes. Shout the trigger word: 'Now!'"},
+      {name:"Game-like: 8v8 to goals",mins:25,org:"Half pitch with two full-size goals and keepers. A goal scored within ten seconds of regaining the ball counts double.",cues:"Who presses, who covers, who balances? Recover centrally if beaten."},
+      {name:"Game: 9v9 free play",mins:20,org:"Three-quarter pitch. Coach in flow only, no stoppages.",cues:"Watch for transfer. Note moments for video review."}
+    ],
+    lens:{0:true,1:true,2:true,3:true,4:true}
+  }],
+  gameplans:[{
+    id:"g1", opponent:"Westside Academy U17", date:"", comp:"League",
+    keys:["Press their left centre-back. He's slow to turn.","Switch quickly. They shift slowly to the far side.","Protect the middle after we lose the ball."],
+    threats:"Quick number 9 who runs in behind. Long throws.",
+    inposs:"Build through the 6. Overload on the left, then switch to the right winger 1v1.",
+    outposs:"Mid block, engage on their left centre-back. Press on backward passes.",
+    ht:"", review:{kpi:"Regains within 5 seconds of losing the ball: 6 of 41 (15%). Target 30%. Line-breaking passes: 14.",well:"Build-up through the 6 worked. The left-side overload created the switch four times.",next:"Counter-press after loss. We jogged back after losing it in midfield; their first pass found a runner behind us three times."}
+  }],
+  players:[
+    {id:"p1", name:"Marcus", pos:"Central midfielder", age:"16", review:"",
+     corners:{tech:"Clean first touch under pressure. Target: receive on the half-turn more often.",tact:"Reads danger well. Target: scan twice before receiving in midfield.",phys:"Good endurance. Target: repeated-sprint ability.",psy:"Quiet in the group. Target: organise the players around him."},
+     actions:"Scanning cue in every possession practice. Video clip review every two weeks. Captain one small-sided game a week.", notes:""},
+    {id:"p2", name:"Leo", pos:"Left back", age:"15", review:"",
+     corners:{tech:"Strong crosser. Target: weaker-foot passing inside.",tact:"Gets caught high. Target: rest-defence position when the ball is on the far side.",phys:"Late maturer, still growing. Target: manage load; strength work as advised.",psy:"Resilient after mistakes. Keep reinforcing it."},
+     actions:"Weaker-foot targets in warm-up. Rest-defence role in 8v8 games. Check in monthly on growth and soreness.", notes:""}
+  ],
+  reviews:[{
+    id:"r1", date:"", session:"Counter-press after loss", secs:1080,
+    counts:{q:4,cmd:9,spec:6,gen:8,stop:5,flow:7,demo:1},
+    rubric:{org:3,real:3,reps:2,topic:3,int:2,own:2,adapt:3}, notes:"Too many stoppages in the possession game. Good intensity in the 8v8."
+  }],
+  evidence:[
+    {id:"e1", t:"Game model v1 draft", d:"game", type:"Document", link:"", date:""},
+    {id:"e2", t:"Session plan: counter-press after loss", d:"train", type:"Session plan", link:"", date:""},
+    {id:"e3", t:"Player plan: Marcus (CM)", d:"player", type:"Player plan", link:"", date:""}
+  ]
+};
+
+/* ---------- Session "assessor's lens" ---------- */
+const LENS = [
+  "The topic comes from a game-model principle and a problem seen in a match",
+  "The practice keeps direction, opponents and real decisions",
+  "Players get lots of repetitions at match intensity",
+  "Areas and numbers are set to make the topic happen often",
+  "Coaching points are few, specific, and tied to the topic",
+  "Progressions and regressions are planned in advance",
+  "The final game tests whether the learning transfers"
+];
+
+/* ---------- Video review ---------- */
+const LOGTYPES = [
+  {k:"q",   name:"Question",          hint:"Guided discovery"},
+  {k:"cmd", name:"Instruction",       hint:"Telling what to do"},
+  {k:"spec",name:"Specific feedback", hint:"Names the cue or decision"},
+  {k:"gen", name:"General praise",    hint:"'Good job', 'well done'"},
+  {k:"stop",name:"Stoppage",          hint:"Freeze or stop play"},
+  {k:"flow",name:"In-flow cue",       hint:"Coaching while play runs"},
+  {k:"demo",name:"Demonstration",     hint:"Show, don't tell"}
+];
+const RUBRIC = [
+  {k:"org",  name:"Organisation",          d:"Area, numbers, equipment and changeovers are efficient."},
+  {k:"real", name:"Realism",               d:"The practice looks like the game: direction, opponents, decisions."},
+  {k:"reps", name:"Intensity and reps",    d:"Frequent repetitions at match-like intensity."},
+  {k:"topic",name:"Topic focus",           d:"Coaching stays on the stated objective."},
+  {k:"int",  name:"Intervention quality",  d:"Timing, brevity and accuracy of stoppages and cues."},
+  {k:"own",  name:"Player ownership",      d:"Players solve problems; questions are used well."},
+  {k:"adapt",name:"Adapting",              d:"Progresses or regresses in response to the players."}
+];
+
+/* ---------- 24-week plan ---------- */
+const BLOCKS = [
+  {name:"Foundations", weeks:[1,4]},{name:"Training design", weeks:[5,8]},{name:"Game coaching", weeks:[9,12]},
+  {name:"Player development", weeks:[13,16]},{name:"Performance analysis", weeks:[17,20]},{name:"Assessment readiness", weeks:[21,24]}
+];
+const WEEKS = [
+  ["Complete the onboarding modules in the Learning Center","Share the course calendar with the club and family","Set up filming: a tripod position that covers the whole area"],
+  ["Write game model v1: identity and principles for each moment","Watch one match and note three recurring problems","Film one full session as a baseline"],
+  ["Review the baseline video with the intervention logger","Share the game model with staff and agree on shared vocabulary","Draft three KPIs that measure the game model"],
+  ["Swap a session video with a course colleague for peer review","Write a block-one reflection","Update the game model to v1.1"],
+  ["Plan a session for an in-possession principle","Run it, film it, log the interventions","Write a five-line reflection"],
+  ["Plan a session for an out-of-possession principle","Coach mostly in flow: one stoppage maximum per practice","Compare intervention stats with week 3"],
+  ["Plan a transition session","Write progressions and regressions in advance","Get feedback from a mentor or course educator"],
+  ["Map a training week against match day (MD-4 to MD-1)","Review all four sessions against the assessor's lens","Add the best two sessions to the portfolio"],
+  ["Write a game plan for the next opponent from the game model","Script the pre-match talk: three messages maximum","Note what you said at half-time and why"],
+  ["Post-match review: track two KPIs","Train the problem from the match this week","Game plan #2"],
+  ["Rehearse half-time talks with the three-minute timer","Agree in-game cue words with the captain","Game plan #3, with a review"],
+  ["Game plan #4, with a review","Review your touchline behaviour on video","Mid-course reflection: strengths and gaps by competency"],
+  ["Choose three players with different profiles for development plans","Agree targets with each player in a one-to-one","Set review dates"],
+  ["Build individual targets into team sessions","Film one clip per player on their target","Note each player's growth and maturation context"],
+  ["Mid-point player reviews","Adjust targets based on the evidence","Psychosocial check-ins"],
+  ["Final player-plan reviews with video","Add the plans to the portfolio","Reflection: what changed for each player"],
+  ["Write event definitions for your KPIs","Code one full match","Compare with a second coder if possible"],
+  ["Build a four-clip team video meeting","Deliver it and note what the players took away","Link the analysis to the next session"],
+  ["Code a second match","Check trends across matches","Update any KPI that doesn't reflect the game model"],
+  ["Write a one-page analysis summary","Update to game model v2 from the evidence","Add the analysis report to the portfolio"],
+  ["Portfolio audit: four pieces of evidence per competency","Mock interview: five prompts out loud, recorded","Work on the weakest competency first"],
+  ["Rehearse the game-model pitch to two minutes","Plan the final filmed session against the assessor's lens","Mock interview: five more prompts"],
+  ["Review the final session with the logger and rubric","Final game plan and review","Tidy the evidence library"],
+  ["Final assessments","Write a full-course reflection","Plan the 12-month hold period toward the A"]
+];
+
+/* ---------- Knowledge bank ---------- */
+const QUESTIONS = [
+// Leadership
+{d:"lead",q:"In a mastery (task-involving) motivational climate, success is mainly judged by…",o:["Personal improvement, effort and learning", "Beating teammates in selection", "Match results and league position", "Praise from the head coach"],a:0,e:"A mastery climate defines success through improvement and effort. An ego (performance) climate defines it by comparison with others."},
+{d:"lead",q:"Self-determination theory says motivation is supported when three needs are met. Which set?",o:["Autonomy, competence, relatedness", "Discipline, effort, reward", "Confidence, focus, control", "Challenge, support, feedback"],a:0,e:"Deci and Ryan: autonomy, competence and relatedness."},
+{d:"lead",q:"A team has high psychological safety when players…",o:["Never hear critical feedback", "Are guaranteed playing time", "Feel able to speak up, ask questions and make mistakes without humiliation", "Avoid conflict with staff"],a:2,e:"Edmondson: a shared belief that the team is safe for interpersonal risk-taking. It sits alongside high standards, not instead of them."},
+{d:"lead",q:"Which feedback is most likely to change a player's next decision?",o:["\"Good job, keep going.\"", "\"Be better on the ball.\"", "\"That's not good enough at this level.\"", "\"You received square-on, so your only option was back. Open your hips before the ball arrives.\""],a:3,e:"Specific, timely feedback about the cue and the decision gives the player something to do next time."},
+{d:"lead",q:"Which is an autonomy-supportive coaching behaviour?",o:["Using sprints as punishment for mistakes", "Offering choices within clear limits and explaining the reason for a rule", "Withholding information so players stay dependent", "Praising only the starters"],a:1,e:"Choice within structure, plus a rationale, supports autonomy without lowering standards."},
+{d:"lead",q:"A senior player openly challenges your tactical decision mid-session. The strongest first response is to…",o:["Send them off the field immediately", "Acknowledge it briefly, keep the session moving, and talk it through privately afterwards", "Stop the session for a ten-minute debate", "Ignore it completely, now and later"],a:1,e:"Protect the session's flow and the player's dignity, then resolve it one-to-one. Ignoring it entirely lets the issue grow."},
+{d:"lead",q:"Why should all staff share the same game-model vocabulary?",o:["It makes the coaching manual longer", "Players hear consistent cues from every coach, which speeds learning", "The Laws of the Game require it", "So players don't have to think"],a:1,e:"Shared language reduces mixed messages and lets every coach reinforce the same principles."},
+{d:"lead",q:"In Gibbs' reflective cycle, which stage comes straight after Analysis?",o:["Conclusion", "Description", "Evaluation", "Feelings"],a:0,e:"Description, Feelings, Evaluation, Analysis, Conclusion, Action plan."},
+{d:"lead",q:"Best practice when telling a player they are not selected is to…",o:["Tell them individually, give the reason, and name what to work on", "Post the team sheet and say nothing", "Let the captain tell them", "Wait until they ask"],a:0,e:"Direct, private, specific, with a path forward. It keeps trust intact."},
+{d:"lead",q:"A team talk with ten tactical points is most likely to…",o:["Improve recall of each point", "Raise intensity", "Have no effect", "Reduce what players retain and act on"],a:3,e:"Working memory is limited. Two or three clear messages are retained and acted on far better."},
+// Coaching training
+{d:"train",q:"In a constraints-led approach, shrinking the pitch is a change to which type of constraint?",o:["Task", "Environmental", "Individual", "Organismic"],a:0,e:"Rules, pitch size, numbers and equipment are task constraints. Weather, surface and culture are environmental. Height, fitness and skill are individual."},
+{d:"train",q:"Representative learning design means practice should…",o:["Copy professional drills exactly", "Be the same every week", "Remove opponents so players can focus", "Keep the information players use in matches: opponents, teammates, direction"],a:3,e:"Practice should keep the perception-action links of the game so learning transfers to matches."},
+{d:"train",q:"Making a possession area larger, with the same numbers, usually makes keeping the ball…",o:["Easier", "Harder", "No different", "Impossible to measure"],a:0,e:"More space means more time on the ball and less pressure. Shrink the area to raise the challenge."},
+{d:"train",q:"Compared with 11v11, small-sided games with fewer players per team typically give each player…",o:["More touches and more involvement", "Fewer touches", "Less physical load", "No decisions"],a:0,e:"Fewer players means more ball contacts and more frequent decisions per player."},
+{d:"train",q:"Guided discovery is when the coach…",o:["Tells the player exactly what to do", "Asks questions that lead the player to find the solution", "Demonstrates and walks away", "Stays silent all session"],a:1,e:"Questions direct attention to the right cues, so the player builds the solution and owns it."},
+{d:"train",q:"When is a stop-freeze most justified?",o:["Every two minutes, as routine", "When the coach wants a break", "When a pattern keeps recurring and the whole group needs to see the picture", "Whenever a goal is scored"],a:2,e:"Use it sparingly, for a recurring problem that matters to the group. Keep it short: freeze, rewind, show, replay."},
+{d:"train",q:"The main benefit of in-flow coaching is that it…",o:["Gives the coach more talking time", "Corrects without stopping play, protecting intensity and repetitions", "Replaces planning", "Only works with professionals"],a:1,e:"A short cue during play keeps the session moving and players active."},
+{d:"train",q:"The strongest reason for choosing a session topic is that it…",o:["Appeared in a famous coach's book", "Is the coach's favourite drill", "Links to a game-model principle and a problem seen in the last match", "Needs no equipment"],a:2,e:"Assessors look for a clear thread: game model, then match observation, then session objective, then coaching."},
+{d:"train",q:"In a typical tactical-periodisation week, which day usually uses larger spaces and longer efforts?",o:["MD-1", "MD-2", "MD-3", "MD+1"],a:2,fx:1,e:"A common morphocycle: MD-4 tension (small spaces), MD-3 duration (large spaces, longer efforts), MD-2 speed, MD-1 activation."},
+{d:"train",q:"Whole-part-whole means…",o:["Only train set pieces", "Run three different drills", "Play the game, isolate a part to practise, then return to the game", "Coach the group, then individuals, then the group"],a:2,e:"Start with the game to see the problem, practise the part, then put it back in the game to check it transfers."},
+// Coaching games
+{d:"game",q:"A strong half-time talk usually…",o:["Covers every mistake from the first half", "Changes the whole game plan every time", "Is mostly about refereeing decisions", "Lets players settle, then gives two or three clear points and one final message"],a:3,e:"Settle, prioritise, simplify. Players need a few actionable points to take back out."},
+{d:"game",q:"A game plan should be built from…",o:["Last season's tactics", "The opponent only", "Your game model, adapted to the opponent, available players and context", "Whatever the best player prefers"],a:2,e:"The game model is the constant. The game plan adjusts it for this opponent, on this day."},
+{d:"game",q:"Which is a commonly used pressing trigger?",o:["The opposing goalkeeper kicks long", "The opponent switches play perfectly", "A slow backward or square pass, or a poor first touch", "Our team is tired"],a:2,e:"Triggers signal a moment when the ball carrier is vulnerable: backward passes, poor touches, receivers facing their own goal, the ball going toward the touchline."},
+{d:"game",q:"\"Rest defence\" refers to…",o:["Players kept behind the ball while attacking, to stop counter-attacks", "Defending only when tired", "Recovery training after matches", "Defending deep for the whole match"],a:0,e:"Your structure behind the ball while in possession, ready for the moment you lose it."},
+{d:"game",q:"A mid block means the team…",o:["Presses man-to-man in the opponent's box", "Doesn't defend", "Sets its defensive block around the middle third and engages when the ball enters that zone", "Defends on the edge of its own box"],a:2,e:"The defensive line and the height of engagement sit in the middle third."},
+{d:"game",q:"From the touchline, in-game instructions work best when they are…",o:["Constant and detailed", "Short, specific, and timed for stoppages or nearby players", "Directed at the referee", "Given only by substitutes"],a:1,e:"Players under match load can't process long instructions. Use stoppages, the captain, and short pre-agreed cues."},
+{d:"game",q:"After an emotional defeat, the best time for detailed feedback is usually…",o:["Brief comments now, detailed video review at the next session", "Straight away, in full, in the dressing room", "Never", "A group text that evening"],a:0,e:"Emotion blocks learning. Keep it short after the match and go into detail when players can process it."},
+{d:"game",q:"Leading by one goal with ten minutes left, which adjustment fits most game models?",o:["Protect rest defence and manage risk in possession", "Drop all pressing triggers", "Send both full-backs forward", "Substitute the goalkeeper"],a:0,e:"Game-state management: limit exposure to counters while keeping the ball sensibly."},
+{d:"game",q:"Counter-pressing (gegenpressing) is…",o:["Pressing only from goal kicks", "Pressing immediately after losing the ball, to win it back quickly", "Dropping into a low block after losing the ball", "Man-marking the striker"],a:1,e:"An immediate reaction to losing the ball, while the opponent is still disorganised."},
+{d:"game",q:"Scouting an opponent is most useful when you focus on…",o:["Their kit colours", "Everything they do, equally", "The few things that most affect your plan, such as their build-up shape and main threat", "Their league position only"],a:2,e:"Prioritise what changes your decisions. Detail that doesn't change the plan is noise."},
+// Player development
+{d:"player",q:"For boys, peak height velocity (PHV) usually happens around age…",o:["9–10", "11–12", "13–14", "17–18"],a:2,fx:1,e:"Around 13.5–14 for boys and earlier, around 11.5–12, for girls, with wide individual variation."},
+{d:"player",q:"The relative age effect describes…",o:["Older coaches being more successful", "Age limits in competition", "Players peaking at 27", "Over-representation of players born early in the selection year"],a:3,e:"Early-born players are often more physically mature and get selected more, which can hide talent born later in the year."},
+{d:"player",q:"Bio-banding groups players by…",o:["Position", "Maturity status rather than birth year", "Club", "Skill test results"],a:1,e:"It reduces maturity mismatches and gives early and late developers different challenges."},
+{d:"player",q:"Around the growth spurt, a player reports knee or heel pain. A sensible response is to…",o:["Increase load to toughen them up", "Remove them from the team permanently", "Ignore it until it stops", "Manage load and refer for assessment; growth-related conditions such as Osgood-Schlatter are common"],a:3,e:"Growth-related apophysitis is common around PHV. Adjust load and get it assessed."},
+{d:"player",q:"A four-corner player plan covers technical, tactical, physical and…",o:["Psychosocial", "Financial", "Academic", "Nutritional only"],a:0,e:"The psychosocial corner covers confidence, communication, resilience and relationships."},
+{d:"player",q:"Which goal is the most useful in a player development plan?",o:["\"Get better at passing.\"", "\"Play more line-breaking passes.\"", "\"Over the next six weeks, scan twice before receiving in midfield, checked on video every two weeks.\"", "\"Be the best in the team.\""],a:2,e:"Specific, measurable, achievable, relevant and time-bound, with a way to check it."},
+{d:"player",q:"A late-maturing player loses most physical duels. A fair evaluation focuses on…",o:["Current physical output", "Height", "1v1 win rate only", "Decision-making, technique and rate of learning"],a:3,e:"Judge what predicts the long term. Physical gaps often close after maturation."},
+{d:"player",q:"Deliberate practice, as Ericsson describes it, is…",o:["Free play with friends", "Watching matches", "Any time spent playing", "Effortful, goal-directed practice with feedback, aimed at specific weaknesses"],a:3,e:"Effortful and focused. Deliberate play, by contrast, is fun-led and informal."},
+{d:"player",q:"In Côté's model, the sampling years (about 6–12) emphasise…",o:["Fitness testing", "Early specialisation in one position", "Playing several sports and lots of deliberate play", "Tactical periodisation"],a:2,e:"Broad experience and enjoyment first, then specialisation in the teenage years."},
+{d:"player",q:"Releasing players at U13 based on current performance mainly risks…",o:["Nothing", "Fewer injuries", "Stronger teams", "Losing late developers who could become the best players"],a:3,e:"Performance at 12 is a weak predictor of senior performance, especially across maturity differences."},
+// Performance analysis
+{d:"analysis",q:"Expected goals (xG) is…",o:["The goals a team should score in a season", "Goals minus shots", "A measure of possession", "The probability that a shot becomes a goal, based on historical shots with similar features"],a:3,e:"Each shot gets a probability from features such as distance, angle and type of assist."},
+{d:"analysis",q:"Your principle is \"progress through the lines\". Which KPI fits best?",o:["Total possession %", "Distance covered", "Corners won", "Completed line-breaking passes, or entries into the final third"],a:3,e:"A KPI should measure the principle directly. Possession alone doesn't show progression."},
+{d:"analysis",q:"PPDA (passes allowed per defensive action). A lower value usually means…",o:["More intense pressing", "Less intense pressing", "More possession", "More goals conceded"],a:0,e:"The opponent completes fewer passes before you make a defensive action in the chosen zone."},
+{d:"analysis",q:"Field tilt describes…",o:["A sloping pitch", "The height of the offside line", "Each team's share of final-third possession or passes", "Wind direction"],a:2,e:"It shows territorial dominance in the attacking third."},
+{d:"analysis",q:"Before coding a match, the most important step is to…",o:["Pick the chart colours", "Code as fast as possible", "Use only automatic data", "Write clear definitions for each event so coding is consistent"],a:3,e:"Operational definitions make data reliable between coders and across matches."},
+{d:"analysis",q:"Which is a process measure rather than an outcome measure?",o:["Goals scored", "Controlled entries into the box", "Final score", "Points won"],a:1,e:"Process measures reflect how you play and predict outcomes over time. Outcomes are noisy in single matches."},
+{d:"analysis",q:"One match shows an unusual drop in pass completion. The best response is to…",o:["Drop the midfield", "Rebuild the game model", "Check the context and the trend over several matches first", "Ignore all data"],a:2,e:"Single matches are noisy. Look at context and trends."},
+{d:"analysis",q:"For a team video meeting, good clip selection means…",o:["Every mistake from the match", "A few clips linked to one or two principles, mixing what to repeat and what to fix", "Only goals conceded", "An hour of footage"],a:1,e:"Focused, principle-linked and balanced clips are what players retain."},
+{d:"analysis",q:"Inter-rater reliability checks whether…",o:["Two analysts coding the same footage get the same results", "Players agree with the coach", "The camera angle is correct", "The data is published"],a:0,e:"If two coders disagree, fix the definitions or the training before trusting the numbers."},
+{d:"analysis",q:"Your data says you press well, but video shows players jogging after losing the ball. You should…",o:["Trust the data only", "Use both, and check how the metric is defined", "Trust the video only", "Stop analysing"],a:1,e:"Numbers and video should challenge each other. Check what the metric actually captures."},
+// Laws & safeguarding
+{d:"safe",q:"There is no offside offence when a player receives the ball directly from…",o:["A free kick", "A throw-in, goal kick or corner kick", "A penalty rebound", "A teammate's pass in their own half"],a:1,e:"Law 11: no offside offence directly from a goal kick, throw-in or corner kick."},
+{d:"safe",q:"A player in an offside position is penalised only when they…",o:["Are in the opponents' half", "Are near the goalkeeper", "Are behind the ball", "Become involved in active play"],a:3,e:"Being in an offside position is not an offence in itself. Involvement in active play is."},
+{d:"safe",q:"Where the competition allows, the Laws permit up to five substitutes, used in…",o:["Unlimited stoppages", "Half-time only", "At most three opportunities, plus half-time", "Two opportunities"],a:2,e:"Law 3: five substitutes in no more than three opportunities during play; half-time doesn't count as one."},
+{d:"safe",q:"The U.S. Center for SafeSport's MAAPP requires one-on-one interactions with minor athletes to be…",o:["Avoided with no exceptions", "Approved by the referee", "Observable and interruptible", "Recorded on video"],a:2,e:"The Minor Athlete Abuse Prevention Policies limit one-on-one interactions to observable and interruptible settings, with limited exceptions."},
+{d:"safe",q:"A player shows signs of a possible concussion. The correct action is to…",o:["Remove them from play with no return that day, then follow a graduated return after medical clearance", "Check they know the score, then continue", "Let them finish the half", "Give them water and continue"],a:0,e:"When in doubt, sit them out. Return to play follows a step-by-step protocol after clearance."},
+{d:"safe",q:"Under U.S. Soccer's heading guidelines, players aged 10 and under…",o:["May head freely", "May head only in training", "May head only in matches", "Should not head the ball"],a:3,e:"No heading for players 10 and under. Heading in training is limited for ages 11–13."},
+{d:"safe",q:"A defender denies an obvious goal-scoring opportunity with a foul in their own penalty area while genuinely trying to play the ball. The sanction is…",o:["Penalty and red card", "Penalty and yellow card", "Indirect free kick only", "No sanction"],a:1,e:"Law 12: when the offence is an attempt to play the ball, the penalty comes with a caution, not a sending-off."},
+{d:"safe",q:"The goalkeeper handles a ball deliberately kicked to them by a teammate. The restart is…",o:["Penalty kick", "Indirect free kick", "Direct free kick", "Dropped ball"],a:1,e:"An indirect free kick to the opponents."},
+{d:"safe",q:"A throw-in goes directly into the opponents' goal untouched. The result is…",o:["Goal", "Goal kick", "Corner kick", "Retake"],a:1,e:"A goal can't be scored directly from a throw-in. If it enters the opponents' goal, it's a goal kick."},
+{d:"safe",q:"Can a goal be scored directly from a kick-off?",o:["Yes, against the opponents", "No, never", "Only in extra time", "Only after a teammate touches it"],a:0,e:"Law 8: a goal may be scored directly against the opponents from a kick-off."}
+];
+
+const CARDS = [
+{d:"game",t:"Game model",x:"The team's agreed way of playing in every moment of the game, written as principles and sub-principles. It stays constant; game plans adapt it."},
+{d:"game",t:"Game plan",x:"How the game model is adapted for one match: opponent, players available, conditions, game state."},
+{d:"game",t:"Principle",x:"A behaviour the team wants to see in a moment of the game, e.g. 'find the free player between the lines'. Sub-principles break it into specific actions."},
+{d:"game",t:"Moments of the game",x:"In possession, out of possession, transition to defend, transition to attack, plus set pieces."},
+{d:"game",t:"Rest defence",x:"The players and shape kept behind the ball while attacking, ready to stop a counter-attack."},
+{d:"game",t:"Counter-press",x:"Pressing immediately after losing the ball to win it back while the opponent is disorganised."},
+{d:"game",t:"Pressing trigger",x:"A cue that tells the team to press: backward pass, poor touch, receiver facing own goal, ball to the touchline."},
+{d:"game",t:"Block height",x:"Where the defensive block sets up: high press (opponent's third), mid block (middle third), low block (own third)."},
+{d:"game",t:"Half-space",x:"The vertical channel between the centre and the wing. Receiving there opens more passing angles and options to turn."},
+{d:"game",t:"Third-man run",x:"Player A passes to B, who sets it for C running into space. C is the 'third man' the defence didn't track."},
+{d:"game",t:"Overload to isolate",x:"Crowd one side to draw the opponent across, then switch to a 1v1 on the far side."},
+{d:"game",t:"Line-breaking pass",x:"A pass that goes past one of the opponent's defensive lines to a teammate behind it."},
+{d:"train",t:"Rondo",x:"A possession game with an overload (e.g. 5v2) in a small area. Trains passing, body shape, scanning and pressing."},
+{d:"train",t:"Constraints-led approach",x:"Shaping learning by changing task, environment or individual constraints so the desired behaviours emerge."},
+{d:"train",t:"Representative learning design",x:"Practice that keeps the key information of the game: opponents, teammates, direction and real decisions."},
+{d:"train",t:"Guided discovery",x:"Coaching through questions that lead players to find the solution themselves."},
+{d:"train",t:"Stop-freeze",x:"Stopping play to show the whole group a picture. Use sparingly and keep it short: freeze, rewind, show, replay."},
+{d:"train",t:"In-flow coaching",x:"Short cues during play, without stopping. Protects intensity and repetitions."},
+{d:"train",t:"Whole-part-whole",x:"Game, then an isolated part, then back to the game to check transfer."},
+{d:"train",t:"Morphocycle",x:"The weekly training structure built around match day in tactical periodisation (e.g. MD-4 tension, MD-3 duration, MD-2 speed, MD-1 activation)."},
+{d:"train",t:"MD-1",x:"The day before a match: short, sharp, low load. Set pieces and activation."},
+{d:"player",t:"PHV",x:"Peak height velocity: the fastest point of the adolescent growth spurt. Around 13.5–14 for boys, earlier for girls."},
+{d:"player",t:"Relative age effect",x:"Players born early in the selection year are over-represented in selected teams."},
+{d:"player",t:"Bio-banding",x:"Grouping players by maturity status rather than chronological age."},
+{d:"player",t:"Four-corner model",x:"A player profile across technical, tactical, physical and psychosocial."},
+{d:"player",t:"SMART goal",x:"Specific, measurable, achievable, relevant, time-bound."},
+{d:"lead",t:"Mastery climate",x:"An environment where success means improvement and effort, and mistakes are part of learning."},
+{d:"lead",t:"Self-determination theory",x:"Motivation thrives when autonomy, competence and relatedness are supported."},
+{d:"lead",t:"Psychological safety",x:"A shared belief that it's safe to speak up, ask and make mistakes. It works alongside high standards."},
+{d:"lead",t:"Gibbs' reflective cycle",x:"Description, Feelings, Evaluation, Analysis, Conclusion, Action plan."},
+{d:"analysis",t:"xG",x:"Expected goals: the probability that a shot is scored, based on historical shots with similar features."},
+{d:"analysis",t:"PPDA",x:"Opponent passes allowed per defensive action in a chosen zone. Lower means more intense pressing."},
+{d:"analysis",t:"Field tilt",x:"Each team's share of possession or passes in the final third."},
+{d:"analysis",t:"KPI",x:"A measure tied directly to a game-model principle, used to judge whether the team plays the way it wants."},
+{d:"analysis",t:"Process vs outcome",x:"Process measures (box entries, line breaks) show how you play. Outcomes (goals, points) are noisy in single matches."},
+{d:"safe",t:"MAAPP",x:"SafeSport's Minor Athlete Abuse Prevention Policies, including keeping one-on-one interactions observable and interruptible."}
+];
+
+/* ---------- Course modules (videos + diagrams) ---------- */
+const DIAGRAMS = [
+  {id:"route-to-the-a",          title:"Route to the A License",           mod:1},
+  {id:"b-course-at-a-glance",    title:"The B course at a glance",         mod:1},
+  {id:"game-model",              title:"The Harbor FC game model",         mod:2},
+  {id:"golden-thread",           title:"The golden thread",                mod:3},
+  {id:"counter-press-session",   title:"Session: counter-press after loss",mod:3},
+  {id:"constraints-led",         title:"Constraints-led design",           mod:3},
+  {id:"intervention-profile",    title:"Reading an intervention profile",  mod:4},
+  {id:"game-day-cycle",          title:"The game-day cycle",               mod:5},
+  {id:"player-development",      title:"Player development plans",         mod:6},
+  {id:"kpis-from-principles",    title:"KPIs from principles",             mod:7},
+  {id:"interview-answers",       title:"Answering assessor questions",     mod:8}
+];
+const MODULES = [
+  {n:1, title:"The route to the A", tools:[["route","Open the route"],["plan","Open the 24-week plan"]], drill:null,
+   points:["U.S. Soccer can waive the C License for former professional and national-team players, at the host’s discretion. The request goes through the Learning Center.",
+           "The B course runs about 24 weeks, blended: virtual classrooms, assignments and two in-person meetings, with a U13+ 11v11 team for the whole course.",
+           "The A requires holding the B for at least a year. Youth or Senior depends on the team environment you can coach in.",
+           "Assessment is competency-based. Evidence of real coaching matters more than knowledge on its own."]},
+  {n:2, title:"Building the game model", tools:[["model","Open the game model"]], drill:"game",
+   points:["A game model describes how the team wants to play in each moment: in possession, out of possession, both transitions, and set pieces.",
+           "Write principles as behaviours you can train and measure. Three or four per moment is plenty.",
+           "The game model stays constant. Game plans adapt it to each opponent.",
+           "Practise explaining it in two minutes, with one real example."]},
+  {n:3, title:"Designing training from the game model", tools:[["session","Open the session planner"]], drill:"train",
+   points:["Every session starts from a principle and a problem seen in a match. That thread is what assessors look for.",
+           "Keep practices representative: direction, opponents and real decisions.",
+           "Use constraints such as area, numbers and scoring rules to make the topic happen often.",
+           "Finish with a free game that tests whether the learning transfers."]},
+  {n:4, title:"Coaching the session", tools:[["video","Open video review"]], drill:"train",
+   points:["Film your sessions and count your interventions. The profile shows how you coach, not what you planned.",
+           "Use stoppages sparingly. Prefer short in-flow cues that protect intensity.",
+           "Specific feedback names the cue or decision. General praise feels kind but teaches little.",
+           "Questions build ownership. Aim for one guided-discovery question at each stoppage."]},
+  {n:5, title:"Coaching games", tools:[["gameday","Open game day"]], drill:"game",
+   points:["A game plan adapts the game model to one opponent, with no more than three key messages.",
+           "At half-time: settle first, then two or three points, then one message to take out.",
+           "Keep post-match comments short after an emotional result. Do the detail at the next session.",
+           "The review names the problem to train next week, which closes the loop."]},
+  {n:6, title:"Developing players", tools:[["players","Open player plans"]], drill:"player",
+   points:["Four-corner plans cover technical, tactical, physical and psychosocial targets, agreed with the player.",
+           "Targets are specific, time-bound and checked on video.",
+           "Growth and maturation change what is fair to expect. Judge late maturers on decisions and technique.",
+           "Build individual targets into team sessions, not just extra work."]},
+  {n:7, title:"Performance analysis", tools:[["evidence","Open the portfolio"]], drill:"analysis",
+   points:["Each KPI should measure a game-model principle directly.",
+           "Write event definitions before coding a match, so the numbers are reliable.",
+           "Single matches are noisy. Look at trends and context.",
+           "Analysis only counts when it changes what you train."]},
+  {n:8, title:"Assessment readiness", tools:[["interview","Open interview prep"],["evidence","Open the portfolio"]], drill:"lead",
+   points:["Aim for at least four strong pieces of evidence per competency before the final assessments.",
+           "Answer assessor questions with context, decision, evidence and what you’d change.",
+           "Rehearse out loud, recorded, with a two-minute limit.",
+           "Talk about your playing career as a resource, and show how you coach players who aren’t like you."]}
+];
+
+const PROMPTS = [
+{d:"lead",q:"Describe your coaching philosophy in under a minute. What would an observer see on the field that proves it?"},
+{d:"lead",q:"How has your playing career shaped how you coach, and where could it limit you?"},
+{d:"lead",q:"Tell us about a conflict with a player or staff member. How did you handle it, and what would you do differently?"},
+{d:"lead",q:"How do you build an environment where players own their development?"},
+{d:"lead",q:"How do you get feedback on your own coaching? What did you change because of it?"},
+{d:"train",q:"Walk us through last week's training. How did each session link to your game model?"},
+{d:"train",q:"Tell us about a session that didn't work. What did you see, and what did you change?"},
+{d:"train",q:"How do you decide when to stop play and when to coach in flow?"},
+{d:"train",q:"How do you challenge your best player and your weakest player in the same practice?"},
+{d:"train",q:"How do you manage training load across a week with one game?"},
+{d:"game",q:"Explain your game model in two minutes. Which principle matters most, and why?"},
+{d:"game",q:"Talk us through your plan for your last game. What changed at half-time, and why?"},
+{d:"game",q:"You're 2–0 down at half-time. What do you say in the first minute?"},
+{d:"game",q:"How do you use substitutions, and what makes you change shape?"},
+{d:"game",q:"How do you prepare players for an opponent without overloading them?"},
+{d:"player",q:"Present one player's development plan. How will you know it's working?"},
+{d:"player",q:"How do you account for growth and maturation in selection and training?"},
+{d:"player",q:"A player is talented but not trusted by teammates. What's your plan?"},
+{d:"player",q:"How do you balance team results with individual development?"},
+{d:"player",q:"Former professionals sometimes coach the player they were. How do you avoid that?"},
+{d:"analysis",q:"Which three KPIs best reflect your game model, and why those?"},
+{d:"analysis",q:"Show us how analysis from a match changed your next training session."},
+{d:"analysis",q:"How do you present analysis to players so they act on it?"},
+{d:"analysis",q:"When do you ignore the data?"},
+{d:"analysis",q:"How do you evaluate your own coaching across a season?"}
+];
+</script>
+<script>
+/* ============================== STATE ============================== */
+const clone = o => JSON.parse(JSON.stringify(o));
+const LS = CONFIG.storageKey;
+let S;
+function fresh(){
+  const today = new Date().toISOString().slice(0,10);
+  const s = {
+    cfg:{name:CONFIG.coachName,bg:CONFIG.background,track:CONFIG.aTrack,start:CONFIG.courseStart,theme:"auto"},
+    ms:{}, checks:{}, plan:{}, model:clone(SEED.model),
+    sessions:clone(SEED.sessions), gameplans:clone(SEED.gameplans), players:clone(SEED.players),
+    reviews:clone(SEED.reviews), evidence:clone(SEED.evidence), quiz:{}, cards:{}, reps:[]
+  };
+  s.reviews.forEach(r=>r.date=r.date||today); s.evidence.forEach(e=>e.date=e.date||today);
+  return s;
+}
+function load(){
+  try{ const p = JSON.parse(localStorage.getItem(LS)||"null"); S = p ? Object.assign(fresh(), p) : fresh(); }
+  catch(e){ S = fresh(); }
+}
+let saveT;
+function save(){ clearTimeout(saveT); saveT = setTimeout(()=>{ try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(e){} }, 200); }
+
+const UI = {view:"dash", mod:1, ses:null, gp:null, pl:null, mom:"poss", pitchOpen:false,
+  quiz:null, qdom:"mix", cdom:"all", cidx:0, cflip:false, idom:"all", iq:null, iscore:{},
+  log:{secs:0,running:false,counts:{},hist:[],rubric:{},session:"",notes:""}};
+
+/* ============================== UTIL ============================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid = () => Math.random().toString(36).slice(2,9);
+const fmt = secs => { secs=Math.max(0,Math.round(secs)); return Math.floor(secs/60)+":"+String(secs%60).padStart(2,"0"); };
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const pct = x => Math.round(x*100)+"%";
+const firstName = () => (S.cfg.name||"Coach").split(" ")[0];
+const initials = () => (S.cfg.name||"C").split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),1800); }
+function niceDate(d){ if(!d) return ""; const x=new Date(d+"T12:00:00"); return isNaN(x)?d:x.toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"}); }
+function applyTheme(){ const t=S.cfg.theme; if(t==="auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme",t); }
+
+function weekNow(){
+  const st = new Date(S.cfg.start+"T00:00:00"); if(isNaN(st)) return null;
+  const diff = (Date.now()-st.getTime())/86400000;
+  return diff < 0 ? {pre:true, days:Math.ceil(-diff)} : {pre:false, n:Math.floor(diff/7)+1};
+}
+function msCurrent(){ return MILESTONES.find(m=>!S.ms[m.id]) || null; }
+
+function readiness(){
+  const out = {};
+  for(const k in DOMAINS){
+    const ev = S.evidence.filter(e=>e.d===k).length;
+    const q = S.quiz[k] || {c:0,n:0};
+    const kn = q.n ? q.c/q.n : 0;
+    const reps = S.reps.filter(r=>r.d===k).length;
+    const score = Math.round(Math.min(ev/4,1)*50 + kn*30 + Math.min(reps/3,1)*20);
+    out[k] = {score, ev, kn, qn:q.n, reps};
+  }
+  return out;
+}
+function nextAction(k, r){
+  if(r.ev < 4){
+    const where = {lead:"evidence",train:"session",game:"gameday",player:"players",analysis:"evidence"}[k];
+    return {text:`Add evidence: ${r.ev} of 4 pieces so far.`, btn:"Build evidence", go:where};
+  }
+  if(r.qn < 10 || r.kn < .8) return {text:`Knowledge: ${r.qn?pct(r.kn)+" correct":"not tested yet"}. Aim for 80%.`, btn:"Drill this", go:"drill", dom:k};
+  return {text:`Interview reps: ${r.reps} of 3 rehearsed.`, btn:"Rehearse", go:"interview", dom:k};
+}
+function addEvidence(t,d,type){
+  S.evidence.push({id:uid(),t,d,type,link:"",date:new Date().toISOString().slice(0,10)}); save(); toast("Added to portfolio");
+}
+
+/* ============================== PITCH ============================== */
+function pitch(inner,label){
+  let stripes=""; for(let i=0;i<7;i++) stripes+=`<rect x="${i*15}" y="0" width="7.5" height="68" fill="rgba(255,255,255,.04)"/>`;
+  return `<svg viewBox="-3 -3 111 74" role="img" aria-label="${esc(label||"Pitch")}">
+  ${stripes}
+  <g fill="none" stroke="var(--pline)" stroke-width=".35">
+    <rect x="0" y="0" width="105" height="68"/><line x1="52.5" y1="0" x2="52.5" y2="68"/><circle cx="52.5" cy="34" r="9.15"/>
+    <rect x="0" y="13.84" width="16.5" height="40.32"/><rect x="88.5" y="13.84" width="16.5" height="40.32"/>
+    <rect x="0" y="24.84" width="5.5" height="18.32"/><rect x="99.5" y="24.84" width="5.5" height="18.32"/>
+    <path d="M16.5 26.69 A9.15 9.15 0 0 1 16.5 41.31"/><path d="M88.5 26.69 A9.15 9.15 0 0 0 88.5 41.31"/>
+    <rect x="-1.8" y="30.34" width="1.8" height="7.32"/><rect x="105" y="30.34" width="1.8" height="7.32"/>
+  </g>
+  <circle cx="52.5" cy="34" r=".5" fill="var(--pline)"/><circle cx="11" cy="34" r=".45" fill="var(--pline)"/><circle cx="94" cy="34" r=".45" fill="var(--pline)"/>
+  ${inner}</svg>`;
+}
+function routePitch(){
+  const cur = msCurrent();
+  const pts = MILESTONES.map(m=>`${m.x},${m.y}`).join(" ");
+  const ci = cur ? MILESTONES.indexOf(cur) : MILESTONES.length-1;
+  const donePts = MILESTONES.slice(0, ci+1).map(m=>`${m.x},${m.y}`).join(" ");
+  let g = `<polyline points="${pts}" fill="none" stroke="rgba(255,255,255,.55)" stroke-width=".5" stroke-dasharray="1.2 1.4"/>`;
+  if(ci>0) g += `<polyline points="${donePts}" fill="none" stroke="#fff" stroke-width=".7"/>`;
+  MILESTONES.forEach((m,i)=>{
+    const done = !!S.ms[m.id], isCur = cur && cur.id===m.id;
+    const fill = done ? "#2353C4" : isCur ? "#E09E14" : "#F5F6F3";
+    const txt = done||isCur ? "#fff" : "#1D2A36";
+    const last = i===MILESTONES.length-1;
+    const ly = (m.y < 30 || last) ? m.y-5.6 : m.y+8;
+    g += `<g class="mag-c" tabindex="0" role="button" aria-label="${esc(m.title)}${done?", done":isCur?", current step":""}" onclick="go('route','m-${m.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go('route','m-${m.id}')}">
+      ${isCur?`<circle cx="${m.x}" cy="${m.y}" r="4.2" fill="none" stroke="#E09E14" stroke-width=".6" class="pulse"/>`:""}
+      <circle class="body" cx="${m.x}" cy="${m.y+.4}" r="4" fill="rgba(0,0,0,.25)"/>
+      <circle class="body" cx="${m.x}" cy="${m.y}" r="4" fill="${fill}" stroke="rgba(0,0,0,.18)" stroke-width=".3"/>
+      <text x="${m.x}" y="${m.y+1.3}" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="800" font-size="3.8" fill="${txt}">${done?"✓":i+1}</text>
+      <text x="${last?m.x+3:m.x}" y="${ly}" text-anchor="${last?"end":"middle"}" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="700" font-size="3.6" fill="#fff" stroke="var(--pitch)" stroke-width=".9" paint-order="stroke">${esc(m.label)}</text>
+    </g>`;
+  });
+  return pitch(g, "Route to the A License, drawn as a move across the pitch");
+}
+function formationPitch(f){
+  const pos = FORMATIONS[f] || FORMATIONS["4-3-3"];
+  const g = pos.map(([x,y,l])=>`<g><circle cx="${x}" cy="${y+.35}" r="3.7" fill="rgba(0,0,0,.25)"/><circle cx="${x}" cy="${y}" r="3.7" fill="${l==="GK"?"#E09E14":"#2353C4"}" stroke="rgba(0,0,0,.18)" stroke-width=".3"/><text x="${x}" y="${y+1.1}" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="800" font-size="${l.length>2?2.5:3.2}" fill="#fff">${l}</text></g>`).join("");
+  return pitch(g, f+" formation");
+}
+
+/* ============================== NAV ============================== */
+const NAV = [
+  {g:"Course", items:[["dash","Dashboard"],["route","Route to the A"],["plan","24-week plan"]]},
+  {g:"Learn", items:[["course","Course"],["diagrams","Diagrams"]]},
+  {g:"Build", items:[["model","Game model"],["session","Session planner"],["gameday","Game day"],["players","Player plans"]]},
+  {g:"Practise", items:[["video","Video review"],["interview","Interview prep"],["drill","Knowledge drills"],["cards","Flashcards"]]},
+  {g:"Prove", items:[["evidence","Portfolio"]]}
+];
+function renderNav(){
+  $("#navWrap").innerHTML = NAV.map(s=>`<div class="navgrp">${s.g}</div><ul class="nav">${s.items.map(([k,l])=>`<li><button class="${UI.view===k?"on":""}" onclick="go('${k}')"><span class="dot"></span>${l}</button></li>`).join("")}</ul>`).join("");
+  $("#brandInit").textContent = initials();
+  $("#brandWho").innerHTML = `${esc(S.cfg.name)}<br>B License now, A-${esc(S.cfg.track)} next`;
+}
+function openNav(){ $("#side").classList.add("open"); $("#scrim").classList.add("open"); }
+function closeNav(){ $("#side").classList.remove("open"); $("#scrim").classList.remove("open"); }
+function go(v, anchor){
+  UI.view = v; closeNav();
+  if(location.hash.slice(1)!==v) history.replaceState(null,"","#"+v);
+  render();
+  if(anchor){ const el=document.getElementById(anchor); if(el){ el.scrollIntoView({behavior:"smooth",block:"start"}); return; } }
+  window.scrollTo(0,0); $("#content").focus({preventScroll:true});
+}
+function render(){
+  renderNav();
+  const fn = VIEWS[UI.view] || VIEWS.dash;
+  $("#content").innerHTML = fn();
+  if(UI.view==="video") tickLog();
+}
+const VIEWS = {};
+/* ============================== DASHBOARD ============================== */
+VIEWS.dash = () => {
+  const cur = msCurrent(), R = readiness(), wk = weekNow();
+  const overall = Math.round(Object.values(R).reduce((a,r)=>a+r.score,0)/Object.keys(R).length);
+  const ranked = Object.entries(R).sort((a,b)=>a[1].score-b[1].score);
+  const [gk, gr] = ranked[0]; const na = nextAction(gk, gr);
+  const barCls = s => s<40?"red":s<70?"amber":"ok";
+
+  let week = "";
+  if(wk && wk.pre){
+    const m = cur || MILESTONES[0];
+    const open = m.checks.map((c,i)=>({c,i})).filter(o=>!S.checks[m.id+":"+o.i]).slice(0,5);
+    week = `<h3>Before day one</h3><p class="small muted" style="margin-bottom:6px">The B course starts in ${wk.days} days (${niceDate(S.cfg.start)}). Open items for “${esc(m.title)}”:</p>
+      ${open.length?open.map(o=>chk(m.id+":"+o.i,o.c,"checks")).join(""):`<p class="small">All items done. Mark the step complete on the route page.</p>`}`;
+  } else if(wk && wk.n<=24){
+    const tasks = WEEKS[wk.n-1];
+    week = `<h3>Week ${wk.n} of 24</h3>${tasks.map((t,i)=>chk("w"+wk.n+":"+i,t,"plan")).join("")}`;
+  } else {
+    week = `<h3>Course weeks complete</h3><p class="small muted">Use the route page for the 12-month hold period.</p>`;
+  }
+
+  return `
+  <h1 class="page">${esc(firstName())}’s route to the A License</h1>
+  <p class="lede">${esc(S.cfg.bg)}. Entering the U.S. Soccer pathway at the B License through the former-player waiver, then on to the A-${esc(S.cfg.track)}.</p>
+  <div class="pitchwrap">${routePitch()}</div>
+  <div class="row between" style="margin:14px 2px 0">
+    <div><span class="small muted">Current step</span><div style="font-weight:600;font-size:17px">${cur?esc(cur.title):"A License reached"}</div><div class="small muted">${cur?esc(cur.hint):""}</div></div>
+    <button class="btn" onclick="go('route','m-${cur?cur.id:"alic"}')">Open this step</button>
+  </div>
+
+  <h2 class="sec">Assessment readiness</h2>
+  <div class="grid2">
+    <div class="panel">
+      <div class="row between" style="margin-bottom:12px"><h3 style="margin:0">By competency</h3><span class="cond" style="font-size:30px;font-weight:800">${overall}%</span></div>
+      ${Object.entries(R).map(([k,r])=>`<div style="margin-bottom:12px"><div class="row between small"><span>${DOMAINS[k].name}</span><span class="muted">${r.score}%</span></div><div class="bar ${barCls(r.score)}"><i style="width:${r.score}%"></i></div></div>`).join("")}
+      <p class="tiny">Evidence 50%, knowledge 30%, interview reps 20%.</p>
+    </div>
+    <div class="panel">
+      <h3>Biggest gap: ${DOMAINS[gk].name}</h3>
+      <p class="small muted" style="margin-bottom:14px">${DOMAINS[gk].blurb}</p>
+      <p style="margin-bottom:14px">${na.text}</p>
+      <button class="btn" onclick="${na.dom?`UI.qdom='${na.dom}';UI.idom='${na.dom}';`:""}go('${na.go}')">${na.btn}</button>
+      <hr style="border:0;border-top:1px solid var(--rule-2);margin:18px 0">
+      ${week}
+    </div>
+  </div>
+
+  <h2 class="sec">Work in progress</h2>
+  <div class="grid3">
+    ${tile("Game model",`${Object.values(S.model.moments).reduce((a,m)=>a+m.length,0)} principles in a ${esc(S.model.formation)}`,"model")}
+    ${tile("Sessions",`${S.sessions.length} planned, ${S.reviews.length} video ${S.reviews.length===1?"review":"reviews"}`,"session")}
+    ${tile("Player plans",`${S.players.length} active`,"players")}
+  </div>`;
+};
+function tile(h,t,v){ return `<button class="panel" style="text-align:left;cursor:pointer" onclick="go('${v}')"><h3>${h}</h3><div class="small muted">${t}</div></button>`; }
+function chk(key,label,store){
+  const on = !!S[store][key];
+  return `<label class="check ${on?"done":""}"><input type="checkbox" ${on?"checked":""} onchange="S.${store}['${key}']=this.checked;save();this.parentNode.classList.toggle('done',this.checked)"><span>${esc(label)}</span></label>`;
+}
+
+/* ============================== ROUTE ============================== */
+VIEWS.route = () => {
+  const cur = msCurrent();
+  const tr = S.cfg.track;
+  return `
+  <h1 class="page">Route to the A</h1>
+  <p class="lede">Eight steps from the waiver to the A License. Tick items as they happen; mark a step complete to move the counter on the dashboard pitch.</p>
+  ${figure("route-to-the-a")}
+  <div class="note blue" style="margin-bottom:22px"><b>The waiver.</b> U.S. Soccer can waive the C License prerequisite for the B course based on professional or national-team playing experience, at the host’s discretion. Requests go through the Learning Center, following the Waiver Process FAQs. Requirements change, so confirm the current criteria before applying.</div>
+  ${MILESTONES.map((m,i)=>{
+    const done=!!S.ms[m.id], isCur=cur&&cur.id===m.id;
+    return `<section class="panel" id="m-${m.id}" style="${isCur?"border-color:var(--amber);box-shadow:0 0 0 2px var(--amber-soft)":""}">
+      <div class="row between">
+        <div class="row" style="gap:12px;flex-wrap:nowrap">
+          <span class="cond" style="font-size:30px;font-weight:800;color:${done?"var(--blue)":isCur?"var(--amber)":"var(--ink-3)"};width:26px">${i+1}</span>
+          <div><h3 style="margin:0">${esc(m.title)}</h3><div class="small muted">${esc(m.hint)}</div></div>
+        </div>
+        ${done?`<span class="tag ok">Done</span>`:isCur?`<span class="tag amber">Current</span>`:""}
+      </div>
+      ${m.id==="b1"?`<p class="small" style="margin-top:12px">The B course runs about 24 weeks in a blended format: weekly virtual classrooms, assignments, independent learning and two in-person meetings. Candidates are assessed across leadership, coaching training sessions, coaching games, player development and performance analysis. Formats vary by host and year, so check the course guide you receive.</p>`:""}
+      ${m.checks.length?`<div style="margin-top:10px">${m.checks.map((c,j)=>chk(m.id+":"+j,c,"checks")).join("")}</div>`:""}
+      <div style="margin-top:10px"><button class="btn ${done?"ghost":""} sm" onclick="S.ms['${m.id}']=!S.ms['${m.id}'];save();render();document.getElementById('m-${m.id}').scrollIntoView({block:'center'})">${done?"Mark as not done":"Mark step complete"}</button></div>
+    </section>`;}).join("")}
+
+  <h2 class="sec" id="atrack">Which A License?</h2>
+  <p class="muted" style="margin-bottom:12px">The A splits into Youth and Senior. The choice depends on the team environment ${esc(firstName())} can access for the course.</p>
+  <div class="row" style="margin-bottom:12px">
+    <button class="chip ${tr==="Youth"?"on":""}" onclick="S.cfg.track='Youth';save();go('route','atrack')">A-Youth</button>
+    <button class="chip ${tr==="Senior"?"on":""}" onclick="S.cfg.track='Senior';save();go('route','atrack')">A-Senior</button>
+  </div>
+  <div class="panel tbl-wrap"><table class="t">
+    <tr><th></th><th>A-Youth</th><th>A-Senior</th></tr>
+    <tr><td><b>Focus</b></td><td>Developing players for the professional game in a youth performance environment (U13–U19)</td><td>Leading a senior team in a high-performance environment</td></tr>
+    <tr><td><b>Prerequisite</b></td><td>B License held for at least one year</td><td>B License held for at least one year, or a confederation A License</td></tr>
+    <tr><td><b>Team access</b></td><td>A youth performance environment, such as an academy</td><td>A high-performance senior team in a U.S.-based competition, or a college team</td></tr>
+    <tr><td><b>Core work</b></td><td>Game model aligned to the club’s style; game plans; analysing and reporting team and individual performance</td><td>Game model and game plans at senior level; leading staff; managing performance across a competitive season</td></tr>
+    <tr><td><b>Fits ${esc(firstName())} if</b></td><td>He coaches in an academy or youth national-team setting</td><td>He has a route into a professional, semi-professional or college senior team</td></tr>
+  </table></div>
+  <p class="tiny" style="margin-top:8px">After the A: the Pro License requires holding an A License for at least one year and is application-based. Confirm all criteria in the Learning Center.</p>`;
+};
+
+/* ============================== 24-WEEK PLAN ============================== */
+VIEWS.plan = () => {
+  const wk = weekNow();
+  const total = WEEKS.length*3, done = Object.keys(S.plan).filter(k=>S.plan[k]).length;
+  const status = !wk ? "" : wk.pre ? `Starts ${niceDate(S.cfg.start)}, in ${wk.days} days.` : wk.n<=24 ? `This is week ${wk.n}.` : "All 24 weeks are behind you.";
+  return `
+  <h1 class="page">24-week plan</h1>
+  <p class="lede">A weekly rhythm that builds evidence in every competency by the final assessments. ${status} Change the start date in Settings; follow your host’s official calendar for meeting dates.</p>
+  <div class="panel" style="margin-bottom:8px"><div class="row between small"><span>${done} of ${total} tasks done</span><span class="muted">${pct(done/total)}</span></div><div class="bar"><i style="width:${done/total*100}%"></i></div></div>
+  ${BLOCKS.map(b=>`<h2 class="sec">${b.name} <span class="muted" style="font-weight:600;font-size:18px">weeks ${b.weeks[0]}–${b.weeks[1]}</span></h2>
+    <div class="weeks">${[...Array(b.weeks[1]-b.weeks[0]+1)].map((_,j)=>{const n=b.weeks[0]+j; const now=wk&&!wk.pre&&wk.n===n;
+      return `<div class="week ${now?"now":""}" id="wk${n}"><div class="row between"><h3>Week ${n}</h3>${now?`<span class="tag amber">This week</span>`:""}</div>${WEEKS[n-1].map((t,i)=>chk("w"+n+":"+i,t,"plan")).join("")}</div>`;}).join("")}</div>`).join("")}`;
+};
+
+/* ============================== GAME MODEL ============================== */
+VIEWS.model = () => {
+  const M = S.model, mk = UI.mom, list = M.moments[mk] || [];
+  return `
+  <h1 class="page">Game model</h1>
+  <p class="lede">The thread that runs through every assessment: sessions, game plans, player plans and KPIs all link back here. Keep it short enough to explain in two minutes.</p>
+  ${figure("game-model")}
+  <div class="grid2" style="align-items:start">
+    <div>
+      <div class="field"><label class="f" for="mid">Identity in one or two sentences</label>
+        <textarea class="in" id="mid" rows="3" oninput="S.model.identity=this.value;save()">${esc(M.identity)}</textarea></div>
+      <div class="field"><label class="f" for="mform">Base shape</label>
+        <select class="in" id="mform" onchange="S.model.formation=this.value;save();render()">${Object.keys(FORMATIONS).map(f=>`<option ${f===M.formation?"selected":""}>${f}</option>`).join("")}</select></div>
+      <div class="row"><button class="btn" onclick="UI.pitchOpen=!UI.pitchOpen;render()">${UI.pitchOpen?"Hide":"Build"} the two-minute pitch</button>
+      <button class="btn ghost" onclick="addEvidence('Game model: '+S.model.formation+', '+Object.values(S.model.moments).reduce((a,m)=>a+m.length,0)+' principles','game','Document')">Add to portfolio</button></div>
+    </div>
+    <div class="pitchwrap">${formationPitch(M.formation)}</div>
+  </div>
+  ${UI.pitchOpen?pitchScript():""}
+  <h2 class="sec">Principles by moment</h2>
+  <div class="mom-tabs">${Object.entries(MOMENTS).map(([k,m])=>`<button class="chip ${k===mk?"on":""}" onclick="UI.mom='${k}';render()">${m.name} <span style="opacity:.6;margin-left:6px">${(M.moments[k]||[]).length}</span></button>`).join("")}</div>
+  <div class="panel">
+    ${list.length?list.map((p,i)=>`<div class="principle">
+      <span class="n">${i+1}</span>
+      <div><input class="in" style="font-weight:600;margin-bottom:6px" value="${esc(p.t)}" aria-label="Principle ${i+1} title" oninput="S.model.moments['${mk}'][${i}].t=this.value;save()">
+      <textarea class="in" rows="2" aria-label="Principle ${i+1} detail" oninput="S.model.moments['${mk}'][${i}].d=this.value;save()">${esc(p.d)}</textarea></div>
+      <button class="xbtn" aria-label="Remove principle ${i+1}" onclick="if(confirm('Remove this principle?')){S.model.moments['${mk}'].splice(${i},1);save();render()}">×</button>
+    </div>`).join(""):`<p class="muted">No principles for this moment yet. Add the behaviour you most want to see.</p>`}
+    <button class="btn ghost sm" style="margin-top:12px" onclick="S.model.moments['${mk}'].push({t:'',d:''});save();render()">Add a principle</button>
+  </div>
+  <p class="tiny" style="margin-top:10px">Tip: three or four principles per moment is plenty. If a principle can’t be trained or measured, rewrite it.</p>`;
+};
+function pitchScript(){
+  const M = S.model;
+  const parts = [`My team’s identity: ${M.identity}`, `We start from a ${M.formation}.`];
+  for(const [k,m] of Object.entries(MOMENTS)){
+    const ps = (M.moments[k]||[]).filter(p=>p.t);
+    if(ps.length) parts.push(`${m.name}: ${ps.map(p=>p.t.replace(/\.$/,"")+".").join(" ")}`);
+  }
+  parts.push(`Everything we train links back to these principles, and our KPIs measure whether we see them on match day.`);
+  const words = parts.join(" ").split(/\s+/).length, secs = Math.round(words/140*60);
+  return `<div class="panel" style="margin-top:16px">
+    <div class="row between"><h3 style="margin:0">The two-minute pitch</h3><span class="tag ${secs<=120?"ok":"amber"}">about ${fmt(secs)} spoken</span></div>
+    <div style="margin-top:10px">${parts.map(p=>`<p style="margin-bottom:8px">${esc(p)}</p>`).join("")}</div>
+    <p class="small muted" style="margin-top:8px">Say it out loud, then add one example from a real match for the principle you name as most important.</p>
+    <button class="btn sm" style="margin-top:10px" onclick="UI.idom='game';UI.iq=PROMPTS.findIndex(p=>p.q.startsWith('Explain your game model'));go('interview')">Rehearse it as an interview answer</button>
+  </div>`;
+}
+/* ============================== SESSION PLANNER ============================== */
+function principleOptions(sel){
+  let h = `<option value="">Choose a principle</option>`;
+  for(const [k,m] of Object.entries(MOMENTS)){
+    const ps = S.model.moments[k]||[]; if(!ps.length) continue;
+    h += `<optgroup label="${m.name}">${ps.map((p,i)=>`<option value="${k}:${i}" ${sel===k+":"+i?"selected":""}>${esc(p.t||"Untitled principle")}</option>`).join("")}</optgroup>`;
+  }
+  return h;
+}
+function principleName(link){ if(!link) return ""; const [k,i]=link.split(":"); const p=(S.model.moments[k]||[])[+i]; return p?`${MOMENTS[k].name}: ${p.t}`:""; }
+function newSession(pre){ const s=Object.assign({id:uid(),title:"New session",date:"",age:"",players:"",mins:90,link:"",objective:"",problem:"",phases:[{name:"Activation",mins:15,org:"",cues:""},{name:"Practice",mins:20,org:"",cues:""},{name:"Game-like practice",mins:25,org:"",cues:""},{name:"Game",mins:20,org:"",cues:""}],lens:{}},pre||{}); S.sessions.unshift(s); UI.ses=s.id; save(); return s; }
+VIEWS.session = () => {
+  if(!S.sessions.length) newSession();
+  let s = S.sessions.find(x=>x.id===UI.ses) || S.sessions[0]; UI.ses = s.id;
+  const idx = S.sessions.indexOf(s);
+  const total = s.phases.reduce((a,p)=>a+(+p.mins||0),0);
+  const lensDone = LENS.filter((_,j)=>s.lens[j]).length;
+  const F = (f,lab,type="text") => `<div class="field"><label class="f">${lab}</label><input class="in" type="${type}" value="${esc(s[f])}" ${type==="number"?`onchange="S.sessions[${idx}].${f}=+this.value;save();render()"`:`oninput="S.sessions[${idx}].${f}=this.value;save()"`}></div>`;
+  return `
+  <h1 class="page">Session planner</h1>
+  <p class="lede">Every plan starts from a game-model principle and a problem you saw in a match. That thread is what assessors look for.</p>
+  ${figure("golden-thread")}
+  <div class="split noprint">
+    <div class="panel" style="padding:12px">
+      <button class="btn sm" style="width:100%;justify-content:center;margin-bottom:8px" onclick="newSession();render()">New session</button>
+      <div class="sel-list">${S.sessions.map(x=>`<button class="${x.id===s.id?"on":""}" onclick="UI.ses='${x.id}';render()"><div style="font-weight:600;font-size:14.5px">${esc(x.title||"Untitled")}</div><div class="tiny">${esc(principleName(x.link)||"No principle linked")}</div></button>`).join("")}</div>
+    </div>
+    <div>
+      <div class="panel">
+        ${F("title","Session title")}
+        <div class="grid4">${F("age","Age group")}${F("players","Players")}${F("mins","Planned minutes","number")}${F("date","Date","date")}</div>
+        <div class="field"><label class="f">Game-model principle</label><select class="in" onchange="S.sessions[${idx}].link=this.value;save();render()">${principleOptions(s.link)}</select></div>
+        <div class="field"><label class="f">Problem seen in the last match</label><textarea class="in" rows="2" oninput="S.sessions[${idx}].problem=this.value;save()">${esc(s.problem)}</textarea></div>
+        <div class="field"><label class="f">Objective: what players will do better by the end</label><textarea class="in" rows="2" oninput="S.sessions[${idx}].objective=this.value;save()">${esc(s.objective)}</textarea></div>
+      </div>
+      <div class="row between" style="margin:22px 0 10px"><h2 class="sec" style="margin:0">Practices</h2><span class="tag ${total===+s.mins?"ok":"amber"}">${total} of ${esc(s.mins)} minutes</span></div>
+      ${s.phases.map((p,i)=>`<div class="phase">
+        <div class="row" style="flex-wrap:nowrap;margin-bottom:8px">
+          <input class="in" style="font-weight:600" value="${esc(p.name)}" aria-label="Practice ${i+1} name" oninput="S.sessions[${idx}].phases[${i}].name=this.value;save()">
+          <input class="in" style="width:84px" type="number" min="0" value="${esc(p.mins)}" aria-label="Minutes" onchange="S.sessions[${idx}].phases[${i}].mins=+this.value;save();render()">
+          <span class="small muted">min</span>
+          <button class="xbtn" aria-label="Remove practice" onclick="S.sessions[${idx}].phases.splice(${i},1);save();render()">×</button>
+        </div>
+        <label class="f">Organisation: area, numbers, rules, scoring</label><textarea class="in" rows="2" oninput="S.sessions[${idx}].phases[${i}].org=this.value;save()">${esc(p.org)}</textarea>
+        <label class="f" style="margin-top:8px">Coaching points and cues</label><textarea class="in" rows="2" oninput="S.sessions[${idx}].phases[${i}].cues=this.value;save()">${esc(p.cues)}</textarea>
+      </div>`).join("")}
+      <button class="btn ghost sm" onclick="S.sessions[${idx}].phases.push({name:'Practice',mins:15,org:'',cues:''});save();render()">Add a practice</button>
+
+      <h2 class="sec">Assessor’s lens <span class="muted" style="font-size:18px;font-weight:600">${lensDone} of ${LENS.length}</span></h2>
+      <div class="panel">${LENS.map((l,j)=>`<label class="check ${s.lens[j]?"":""}"><input type="checkbox" ${s.lens[j]?"checked":""} onchange="S.sessions[${idx}].lens[${j}]=this.checked;save();render()"><span>${esc(l)}</span></label>`).join("")}</div>
+
+      <div class="row" style="margin-top:18px">
+        <button class="btn" onclick="window.print()">Print plan</button>
+        <button class="btn ghost" onclick="UI.log.session=S.sessions[${idx}].title;go('video')">Review the video</button>
+        <button class="btn ghost" onclick="addEvidence('Session plan: '+S.sessions[${idx}].title,'train','Session plan')">Add to portfolio</button>
+        <button class="btn ghost" onclick="const c=JSON.parse(JSON.stringify(S.sessions[${idx}]));c.id=uid();c.title+=' (copy)';S.sessions.unshift(c);UI.ses=c.id;save();render()">Duplicate</button>
+        <button class="btn ghost" onclick="if(confirm('Delete this session plan?')){S.sessions.splice(${idx},1);UI.ses=null;save();render()}">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="printonly">
+    <h2 class="sec" style="margin-top:0">${esc(s.title)}</h2>
+    <p><b>Age group:</b> ${esc(s.age)} &nbsp; <b>Players:</b> ${esc(s.players)} &nbsp; <b>Date:</b> ${esc(niceDate(s.date))} &nbsp; <b>Total:</b> ${total} min</p>
+    <p><b>Principle:</b> ${esc(principleName(s.link))}</p><p><b>Match problem:</b> ${esc(s.problem)}</p><p><b>Objective:</b> ${esc(s.objective)}</p>
+    ${s.phases.map(p=>`<div style="border-top:1px solid #bbb;padding:8px 0"><b>${esc(p.name)} (${esc(p.mins)} min)</b><p>${esc(p.org)}</p><p><i>${esc(p.cues)}</i></p></div>`).join("")}
+  </div>`;
+};
+
+/* ============================== GAME DAY ============================== */
+let htTimer=null, htLeft=180;
+function htStage(){ const e=180-htLeft; return e<60?["Settle","Water and breathing. Let the emotion drop. Staff talk, players listen to each other."]:e<150?["Two or three points","Specific, linked to the game plan, with the units they affect."]:["One message","The single thing every player takes back out."]; }
+function htStart(){ if(htTimer){clearInterval(htTimer);htTimer=null;render();return;} if(htLeft<=0) htLeft=180; htTimer=setInterval(()=>{htLeft--; const c=$("#htc"),st=$("#hts"); if(c){c.textContent=fmt(htLeft); const s=htStage(); st.innerHTML=`<b>${s[0]}.</b> ${s[1]}`;} if(htLeft<=0){clearInterval(htTimer);htTimer=null;toast("Time: back out");render();}},1000); render(); }
+VIEWS.gameday = () => {
+  if(!S.gameplans.length){ S.gameplans.push({id:uid(),opponent:"",date:"",comp:"",keys:["","",""],threats:"",inposs:"",outposs:"",ht:"",review:{well:"",next:"",kpi:""}}); }
+  let g = S.gameplans.find(x=>x.id===UI.gp) || S.gameplans[0]; UI.gp=g.id; const idx=S.gameplans.indexOf(g);
+  const T = (path,lab,rows=2) => { const v=path.split(".").reduce((o,k)=>o[k],g); return `<div class="field"><label class="f">${lab}</label><textarea class="in" rows="${rows}" oninput="S.gameplans[${idx}].${path}=this.value;save()">${esc(v)}</textarea></div>`; };
+  const st = htStage();
+  return `
+  <h1 class="page">Game day</h1>
+  <p class="lede">The game plan adapts the game model to one opponent. Keep the messages few, rehearse the half-time talk, and close the loop with a review that feeds next week’s training.</p>
+  ${figure("game-day-cycle")}
+  <div class="split">
+    <div class="panel" style="padding:12px">
+      <button class="btn sm" style="width:100%;justify-content:center;margin-bottom:8px" onclick="const n={id:uid(),opponent:'',date:'',comp:'',keys:['','',''],threats:'',inposs:'',outposs:'',ht:'',review:{well:'',next:'',kpi:''}};S.gameplans.unshift(n);UI.gp=n.id;save();render()">New game plan</button>
+      <div class="sel-list">${S.gameplans.map(x=>`<button class="${x.id===g.id?"on":""}" onclick="UI.gp='${x.id}';render()"><div style="font-weight:600;font-size:14.5px">${esc(x.opponent||"Opponent to confirm")}</div><div class="tiny">${esc(niceDate(x.date)||x.comp||"")}</div></button>`).join("")}</div>
+    </div>
+    <div>
+      <div class="panel">
+        <div class="grid3">
+          <div class="field"><label class="f">Opponent</label><input class="in" value="${esc(g.opponent)}" oninput="S.gameplans[${idx}].opponent=this.value;save()"></div>
+          <div class="field"><label class="f">Date</label><input class="in" type="date" value="${esc(g.date)}" onchange="S.gameplans[${idx}].date=this.value;save()"></div>
+          <div class="field"><label class="f">Competition</label><input class="in" value="${esc(g.comp)}" oninput="S.gameplans[${idx}].comp=this.value;save()"></div>
+        </div>
+        <label class="f">Three key messages, no more</label>
+        ${[0,1,2].map(i=>`<input class="in" style="margin-bottom:8px" value="${esc(g.keys[i]||"")}" aria-label="Key message ${i+1}" oninput="S.gameplans[${idx}].keys[${i}]=this.value;save()">`).join("")}
+        ${T("threats","Their main threats")}
+        <div class="grid2">${T("inposs","Our plan in possession",3)}${T("outposs","Our plan out of possession",3)}</div>
+      </div>
+
+      <h2 class="sec">Half-time rehearsal</h2>
+      <div class="panel">
+        <div class="row between"><div class="clock" id="htc">${fmt(htLeft)}</div>
+          <div class="row"><button class="btn" onclick="htStart()">${htTimer?"Pause":"Start"}</button><button class="btn ghost" onclick="clearInterval(htTimer);htTimer=null;htLeft=180;render()">Reset</button></div></div>
+        <p id="hts" style="margin:10px 0 12px"><b>${st[0]}.</b> ${st[1]}</p>
+        ${T("ht","What you said, and why")}
+      </div>
+
+      <h2 class="sec">Post-match review</h2>
+      <div class="panel">
+        ${T("review.kpi","KPIs from the game model, with numbers")}
+        ${T("review.well","What matched the game model")}
+        ${T("review.next","The problem to train next week")}
+        <div class="row">
+          <button class="btn" onclick="const g=S.gameplans[${idx}];const s=newSession({title:'Fix: '+(g.review.next||'next-week problem').slice(0,40),problem:g.review.next});go('session')">Plan next week’s session from this</button>
+          <button class="btn ghost" onclick="addEvidence('Game plan and review: '+(S.gameplans[${idx}].opponent||'match'),'game','Game plan')">Add to portfolio</button>
+          <button class="btn ghost" onclick="if(confirm('Delete this game plan?')){S.gameplans.splice(${idx},1);UI.gp=null;save();render()}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+
+/* ============================== PLAYER PLANS ============================== */
+const CORNERS = {tech:"Technical",tact:"Tactical",phys:"Physical",psy:"Psychosocial"};
+VIEWS.players = () => {
+  if(!S.players.length) S.players.push({id:uid(),name:"New player",pos:"",age:"",review:"",corners:{tech:"",tact:"",phys:"",psy:""},actions:"",notes:""});
+  let p = S.players.find(x=>x.id===UI.pl) || S.players[0]; UI.pl=p.id; const idx=S.players.indexOf(p);
+  const I = (f,lab,type="text") => `<div class="field"><label class="f">${lab}</label><input class="in" type="${type}" value="${esc(p[f])}" oninput="S.players[${idx}].${f}=this.value;save()"></div>`;
+  return `
+  <h1 class="page">Player plans</h1>
+  <p class="lede">Individual development plans across four corners. Agree targets with the player, build them into team sessions, and review on a fixed date with video.</p>
+  ${figure("player-development")}
+  <div class="split">
+    <div class="panel" style="padding:12px">
+      <button class="btn sm" style="width:100%;justify-content:center;margin-bottom:8px" onclick="const n={id:uid(),name:'New player',pos:'',age:'',review:'',corners:{tech:'',tact:'',phys:'',psy:''},actions:'',notes:''};S.players.unshift(n);UI.pl=n.id;save();render()">New player plan</button>
+      <div class="sel-list">${S.players.map(x=>`<button class="${x.id===p.id?"on":""}" onclick="UI.pl='${x.id}';render()"><div style="font-weight:600;font-size:14.5px">${esc(x.name)}</div><div class="tiny">${esc([x.pos,x.age&&("age "+x.age)].filter(Boolean).join(", "))}</div></button>`).join("")}</div>
+    </div>
+    <div>
+      <div class="panel"><div class="grid2">${I("name","Name")}${I("pos","Position")}</div><div class="grid2">${I("age","Age")}${I("review","Next review","date")}</div></div>
+      <div class="grid2" style="margin-top:14px">${Object.entries(CORNERS).map(([k,n])=>`<div class="panel"><h3>${n}</h3><textarea class="in" rows="4" aria-label="${n}: strength and target" oninput="S.players[${idx}].corners.${k}=this.value;save()">${esc(p.corners[k])}</textarea></div>`).join("")}</div>
+      <div class="panel" style="margin-top:14px">
+        <div class="field"><label class="f">Actions: how targets show up in team training</label><textarea class="in" rows="3" oninput="S.players[${idx}].actions=this.value;save()">${esc(p.actions)}</textarea></div>
+        <div class="field"><label class="f">Review notes and evidence</label><textarea class="in" rows="3" oninput="S.players[${idx}].notes=this.value;save()">${esc(p.notes)}</textarea></div>
+        <p class="tiny" style="margin-bottom:12px">Keep growth and health notes general and stored with the club’s safeguarding rules in mind.</p>
+        <div class="row">
+          <button class="btn" onclick="addEvidence('Player plan: '+S.players[${idx}].name+(S.players[${idx}].pos?' ('+S.players[${idx}].pos+')':''),'player','Player plan')">Add to portfolio</button>
+          <button class="btn ghost" onclick="if(confirm('Delete this player plan?')){S.players.splice(${idx},1);UI.pl=null;save();render()}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+/* ============================== VIDEO REVIEW ============================== */
+let logTimer=null;
+function logStats(c,secs){
+  const n=k=>c[k]||0, total=LOGTYPES.reduce((a,t)=>a+n(t.k),0);
+  const verbal=n("q")+n("cmd")+n("spec")+n("gen")+n("flow"), mins=Math.max(secs/60,.0001);
+  const s={total, perMin: secs?total/mins:0, qPct: verbal?n("q")/verbal:0, stop10: secs?n("stop")/(secs/600):0, spec:n("spec"), gen:n("gen")};
+  const flags=[];
+  if(secs>=120 && s.stop10>2.5) flags.push("Lots of stoppages for the time. Could some be in-flow cues instead?");
+  if(n("gen")>n("spec")) flags.push("More general praise than specific feedback. Name the cue or the decision.");
+  if(verbal>=5 && s.qPct<.2) flags.push("Few questions. Try one guided-discovery question at each stoppage.");
+  if(n("cmd")>Math.max(n("q"),1)*2) flags.push("Instruction-heavy. Mix in questions so players own the solution.");
+  if(!flags.length && total>=5) flags.push("Balanced profile. Now check whether the interventions stayed on the topic.");
+  s.flags=flags; return s;
+}
+function statsHTML(c,secs){
+  const s=logStats(c,secs);
+  return `<div class="grid3" style="margin-top:12px">
+    <div class="flat"><div class="tiny">Interventions per minute</div><div class="cond" style="font-size:28px;font-weight:800">${s.perMin.toFixed(1)}</div></div>
+    <div class="flat"><div class="tiny">Questions, share of talk</div><div class="cond" style="font-size:28px;font-weight:800">${pct(s.qPct)}</div></div>
+    <div class="flat"><div class="tiny">Specific vs general feedback</div><div class="cond" style="font-size:28px;font-weight:800">${s.spec} : ${s.gen}</div></div>
+  </div>
+  ${s.flags.length?`<div class="note" style="margin-top:12px">${s.flags.map(f=>`<div>${esc(f)}</div>`).join("")}<div class="tiny" style="margin-top:6px">Prompts for reflection, not rules.</div></div>`:""}`;
+}
+function tickLog(){
+  const L=UI.log; const c=$("#logc"); if(c) c.textContent=fmt(L.secs);
+  const st=$("#logstats"); if(st) st.innerHTML=statsHTML(L.counts,L.secs);
+}
+function logToggle(){ const L=UI.log; if(L.running){clearInterval(logTimer);L.running=false;} else {L.running=true; logTimer=setInterval(()=>{L.secs++; tickLog();},1000);} render(); }
+function logHit(k){ const L=UI.log; L.counts[k]=(L.counts[k]||0)+1; L.hist.push(k); const b=$("#lb-"+k); if(b) b.textContent=L.counts[k]; tickLog(); }
+function logUndo(){ const L=UI.log; const k=L.hist.pop(); if(!k) return; L.counts[k]--; const b=$("#lb-"+k); if(b) b.textContent=L.counts[k]; tickLog(); }
+function logSave(){
+  const L=UI.log; if(!L.secs && !L.hist.length){ toast("Log some footage first"); return; }
+  clearInterval(logTimer); L.running=false;
+  S.reviews.unshift({id:uid(),date:new Date().toISOString().slice(0,10),session:L.session||"Untitled session",secs:L.secs,counts:Object.assign({},L.counts),rubric:Object.assign({},L.rubric),notes:L.notes});
+  UI.log={secs:0,running:false,counts:{},hist:[],rubric:{},session:"",notes:""}; save(); toast("Review saved"); render();
+}
+VIEWS.video = () => {
+  const L=UI.log;
+  const avg = r => { const v=RUBRIC.map(x=>r[x.k]).filter(Boolean); return v.length?(v.reduce((a,b)=>a+b,0)/v.length).toFixed(1):"–"; };
+  return `
+  <h1 class="page">Video review</h1>
+  <p class="lede">Play back a filmed session and tap each time you intervene. The profile shows how you coach, not just what you planned. Score the session against the rubric, then save it.</p>
+  ${figure("intervention-profile")}
+  <div class="panel">
+    <div class="field"><label class="f" for="logsess">Session being reviewed</label><input class="in" id="logsess" list="seslist" value="${esc(L.session)}" oninput="UI.log.session=this.value"><datalist id="seslist">${S.sessions.map(s=>`<option value="${esc(s.title)}">`).join("")}</datalist></div>
+    <div class="row between" style="margin:6px 0 14px">
+      <div class="clock" id="logc">${fmt(L.secs)}</div>
+      <div class="row"><button class="btn" onclick="logToggle()">${L.running?"Pause clock":"Start clock"}</button><button class="btn ghost" onclick="logUndo()">Undo last tap</button></div>
+    </div>
+    <div class="logbtns">${LOGTYPES.map(t=>`<button class="logbtn" onclick="logHit('${t.k}')"><b id="lb-${t.k}">${L.counts[t.k]||0}</b>${t.name}<div class="tiny" style="font-weight:500;margin-top:2px">${t.hint}</div></button>`).join("")}</div>
+    <div id="logstats"></div>
+  </div>
+  <h2 class="sec">Rubric</h2>
+  <div class="panel">
+    ${RUBRIC.map(r=>`<div class="item"><div><div style="font-weight:600">${r.name}</div><div class="small muted">${r.d}</div></div>
+      <div class="score" role="group" aria-label="${r.name} score">${[1,2,3,4].map(n=>`<button class="${L.rubric[r.k]===n?"on":""}" aria-label="${n}" onclick="UI.log.rubric['${r.k}']=${n};render()">${n}</button>`).join("")}</div></div>`).join("")}
+    <p class="tiny" style="margin-top:8px">1 not yet, 2 developing, 3 secure, 4 strong. Replace these criteria with the official rubric once the course issues it.</p>
+    <div class="field" style="margin-top:12px"><label class="f">Notes: one thing to keep, one thing to change</label><textarea class="in" rows="3" oninput="UI.log.notes=this.value">${esc(L.notes)}</textarea></div>
+    <button class="btn" onclick="logSave()">Save review</button>
+  </div>
+  <h2 class="sec">Past reviews</h2>
+  <div class="panel">${S.reviews.length?S.reviews.map((r,i)=>{const s=logStats(r.counts,r.secs);return `<div class="item"><div><div style="font-weight:600">${esc(r.session)}</div><div class="small muted">${esc(niceDate(r.date))}, ${fmt(r.secs)} of footage. ${s.perMin.toFixed(1)} interventions a minute, ${pct(s.qPct)} questions, rubric ${avg(r.rubric)} of 4.</div>${s.flags[0]?`<div class="small" style="margin-top:4px;color:var(--ink-2)">Flag: ${esc(s.flags[0])}</div>`:""}${r.notes?`<div class="small" style="margin-top:4px">${esc(r.notes)}</div>`:""}</div>
+    <div class="row" style="flex-wrap:nowrap"><button class="btn ghost sm" onclick="addEvidence('Video review: '+S.reviews[${i}].session,'train','Video review')">Add to portfolio</button><button class="xbtn" aria-label="Delete review" onclick="if(confirm('Delete this review?')){S.reviews.splice(${i},1);save();render()}">×</button></div></div>`;}).join(""):`<p class="muted">No reviews yet. Film a session and log the first one above.</p>`}</div>`;
+};
+
+/* ============================== INTERVIEW PREP ============================== */
+let ivTimer=null, ivLeft=120;
+function ivPool(){ return PROMPTS.map((p,i)=>({...p,i})).filter(p=>UI.idom==="all"||p.d===UI.idom); }
+function ivNext(){ const pool=ivPool(); const cand=pool.filter(p=>p.i!==UI.iq); const pick=(cand.length?cand:pool)[Math.floor(Math.random()*(cand.length||pool.length))]; UI.iq=pick?pick.i:null; UI.iscore={}; ivReset(); render(); }
+function ivReset(){ clearInterval(ivTimer); ivTimer=null; ivLeft=120; }
+function ivStart(){ if(ivTimer){clearInterval(ivTimer);ivTimer=null;render();return;} if(ivLeft<=0) ivLeft=120; ivTimer=setInterval(()=>{ivLeft--; const c=$("#ivc"); if(c) c.textContent=fmt(ivLeft); if(ivLeft<=0){clearInterval(ivTimer);ivTimer=null;toast("Two minutes: wrap up");render();}},1000); render(); }
+const IVCRIT=[["clear","Clear and inside two minutes"],["spec","Used a specific, real example"],["refl","Showed reflection: what you’d change"]];
+VIEWS.interview = () => {
+  if(UI.iq===null || (UI.idom!=="all" && PROMPTS[UI.iq].d!==UI.idom)){ const pool=ivPool(); UI.iq=pool.length?pool[Math.floor(Math.random()*pool.length)].i:0; }
+  const P=PROMPTS[UI.iq];
+  const counts={}; S.reps.forEach(r=>counts[r.d]=(counts[r.d]||0)+1);
+  const allScored=IVCRIT.every(([k])=>UI.iscore[k]);
+  return `
+  <h1 class="page">Interview prep</h1>
+  <p class="lede">Assessors probe how you think: why you chose something, what evidence you have, what you’d change. Answer out loud, record it on your phone, then score yourself honestly.</p>
+  ${figure("interview-answers")}
+  <div class="row" style="margin-bottom:14px">
+    <button class="chip ${UI.idom==="all"?"on":""}" onclick="UI.idom='all';UI.iq=null;ivReset();render()">All</button>
+    ${Object.entries(DOMAINS).map(([k,d])=>`<button class="chip ${UI.idom===k?"on":""}" onclick="UI.idom='${k}';UI.iq=null;ivReset();render()">${d.name} <span style="opacity:.6;margin-left:6px">${counts[k]||0}</span></button>`).join("")}
+  </div>
+  <div class="panel">
+    <span class="tag blue">${DOMAINS[P.d].name}</span>
+    <p class="cond" style="font-size:30px;font-weight:700;line-height:1.15;margin:12px 0 16px;max-width:none">${esc(P.q)}</p>
+    <div class="row between">
+      <div class="clock" id="ivc">${fmt(ivLeft)}</div>
+      <div class="row"><button class="btn" onclick="ivStart()">${ivTimer?"Pause":"Start two minutes"}</button><button class="btn ghost" onclick="ivNext()">Another prompt</button></div>
+    </div>
+    <div class="note blue" style="margin-top:14px">A shape that works: the context, what you decided, the evidence it worked, and what you’d change next time.</div>
+    ${P.d==="game"&&P.q.startsWith("Explain your game model")?`<p class="small" style="margin-top:10px"><a href="#model" onclick="UI.pitchOpen=true;go('model');return false">Open your two-minute pitch</a></p>`:""}
+  </div>
+  <h2 class="sec">Score this rep</h2>
+  <div class="panel">
+    ${IVCRIT.map(([k,l])=>`<div class="item"><div style="font-weight:600">${l}</div><div class="score">${[1,2,3,4].map(n=>`<button class="${UI.iscore[k]===n?"on":""}" aria-label="${n}" onclick="UI.iscore['${k}']=${n};render()">${n}</button>`).join("")}</div></div>`).join("")}
+    <button class="btn" style="margin-top:12px" ${allScored?"":"disabled"} onclick="const v=Object.values(UI.iscore);S.reps.push({d:PROMPTS[UI.iq].d,i:UI.iq,score:v.reduce((a,b)=>a+b,0)/v.length,date:new Date().toISOString().slice(0,10)});save();toast('Rep saved');ivNext()">Save rep and continue</button>
+  </div>
+  <p class="tiny" style="margin-top:10px">${S.reps.length} reps saved. Three per competency counts fully toward readiness.</p>`;
+};
+
+/* ============================== KNOWLEDGE DRILLS ============================== */
+function qStart(){
+  const pool = QUESTIONS.map((q,i)=>({...q,i})).filter(q=>UI.qdom==="mix"||q.d===UI.qdom);
+  const items = shuffle(pool).slice(0,10).map(q=>{
+    if(q.fx) return q;                       // order-dependent options (numeric/day sequences) stay fixed
+    const order = shuffle(q.o.map((_,j)=>j));
+    return {...q, o:order.map(j=>q.o[j]), a:order.indexOf(q.a)};
+  });
+  UI.quiz = {items, pos:0, picked:null, right:0, misses:[]};
+  render();
+}
+function qPick(o){
+  const Q=UI.quiz, it=Q.items[Q.pos]; if(Q.picked!==null) return;
+  Q.picked=o; const ok=o===it.a; if(ok) Q.right++; else Q.misses.push(it);
+  const st=S.quiz[it.d]||(S.quiz[it.d]={c:0,n:0}); st.n++; if(ok) st.c++; save(); render();
+}
+VIEWS.drill = () => {
+  const Q=UI.quiz;
+  const chips = `<div class="row" style="margin-bottom:16px"><button class="chip ${UI.qdom==="mix"?"on":""}" onclick="UI.qdom='mix';UI.quiz=null;render()">Mixed</button>${Object.entries(QDOMAINS).map(([k,d])=>{const s=S.quiz[k];return `<button class="chip ${UI.qdom===k?"on":""}" onclick="UI.qdom='${k}';UI.quiz=null;render()">${d.name}${s&&s.n?` <span style="opacity:.6;margin-left:6px">${pct(s.c/s.n)}</span>`:""}</button>`;}).join("")}</div>`;
+  const head = `<h1 class="page">Knowledge drills</h1><p class="lede">The thinking behind the practical work: coaching science, game concepts, analysis, the Laws and safeguarding. Ten questions a round, with the reasoning after each answer.</p>`;
+  if(!Q) return head+chips+`<div class="panel"><p style="margin-bottom:14px">${QUESTIONS.filter(q=>UI.qdom==="mix"||q.d===UI.qdom).length} questions in this set.</p><button class="btn" onclick="qStart()">Start a round</button></div>`;
+  if(Q.pos>=Q.items.length){
+    return head+chips+`<div class="panel"><h3>Round complete: ${Q.right} of ${Q.items.length}</h3><p class="muted" style="margin-bottom:12px">${Q.right/Q.items.length>=.8?"Strong round.":"Read the explanations below, then run the set again."}</p>
+      ${Q.misses.map(m=>`<div class="item" style="display:block"><div style="font-weight:600">${esc(m.q)}</div><div class="small" style="margin-top:4px"><b>${esc(m.o[m.a])}.</b> ${esc(m.e)}</div></div>`).join("")}
+      <button class="btn" style="margin-top:12px" onclick="qStart()">Another round</button></div>`;
+  }
+  const it=Q.items[Q.pos], answered=Q.picked!==null;
+  return head+chips+`<div class="panel">
+    <div class="row between small muted" style="margin-bottom:8px"><span>Question ${Q.pos+1} of ${Q.items.length}</span><span>${QDOMAINS[it.d].name}</span></div>
+    <div class="bar" style="margin-bottom:16px"><i style="width:${Q.pos/Q.items.length*100}%"></i></div>
+    <h3 style="font-size:19px">${esc(it.q)}</h3>
+    ${it.o.map((o,j)=>`<button class="opt ${answered&&j===it.a?"right":""} ${answered&&j===Q.picked&&j!==it.a?"wrong":""}" ${answered?"disabled":""} onclick="qPick(${j})">${esc(o)}</button>`).join("")}
+    ${answered?`<div class="note ${Q.picked===it.a?"blue":"red"}" style="margin-top:12px"><b>${Q.picked===it.a?"Correct.":"Not quite."}</b> ${esc(it.e)}</div><button class="btn" style="margin-top:12px" onclick="UI.quiz.pos++;UI.quiz.picked=null;render()">${Q.pos+1<Q.items.length?"Next question":"See results"}</button>`:""}
+  </div>`;
+};
+
+/* ============================== FLASHCARDS ============================== */
+VIEWS.cards = () => {
+  const set = CARDS.filter(c=>UI.cdom==="all"||c.d===UI.cdom);
+  const todo = set.filter(c=>!S.cards[c.t]);
+  const known = set.length-todo.length;
+  const chips = `<div class="row" style="margin-bottom:16px"><button class="chip ${UI.cdom==="all"?"on":""}" onclick="UI.cdom='all';UI.cidx=0;UI.cflip=false;render()">All</button>${Object.entries(QDOMAINS).map(([k,d])=>`<button class="chip ${UI.cdom===k?"on":""}" onclick="UI.cdom='${k}';UI.cidx=0;UI.cflip=false;render()">${d.name}</button>`).join("")}</div>`;
+  const head = `<h1 class="page">Flashcards</h1><p class="lede">The vocabulary assessors expect you to use precisely. Tap a card to flip it. “Got it” removes it from the stack; “Again” keeps it in.</p>`;
+  const prog = `<div class="row between small" style="margin-bottom:6px"><span>${known} of ${set.length} known</span></div><div class="bar ok" style="margin-bottom:16px"><i style="width:${set.length?known/set.length*100:0}%"></i></div>`;
+  if(!todo.length) return head+chips+prog+`<div class="panel"><p style="margin-bottom:12px">Every card in this set is marked known.</p><button class="btn" onclick="set_reset()">Reset this set</button></div>`;
+  const c = todo[UI.cidx % todo.length];
+  return head+chips+prog+`
+  <div class="panel card-flip" role="button" tabindex="0" onclick="UI.cflip=!UI.cflip;render()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();UI.cflip=!UI.cflip;render()}">
+    ${UI.cflip?`<div class="def">${esc(c.x)}</div>`:`<div class="term">${esc(c.t)}</div><div class="tiny" style="margin-top:10px">${QDOMAINS[c.d].name}</div>`}
+  </div>
+  <div class="row" style="justify-content:center;margin-top:14px">
+    <button class="btn ghost" onclick="UI.cidx++;UI.cflip=false;render()">Again</button>
+    <button class="btn" onclick="S.cards[CARDS[${CARDS.indexOf(c)}].t]=1;save();UI.cflip=false;render()">Got it</button>
+  </div>`;
+};
+function set_reset(){ CARDS.filter(c=>UI.cdom==="all"||c.d===UI.cdom).forEach(c=>delete S.cards[c.t]); save(); render(); }
+
+/* ============================== PORTFOLIO ============================== */
+VIEWS.evidence = () => {
+  const by={}; for(const k in DOMAINS) by[k]=S.evidence.filter(e=>e.d===k);
+  return `
+  <h1 class="page">Portfolio</h1>
+  <p class="lede">The evidence behind each competency: plans, videos, reviews and reflections. Aim for at least four strong pieces per competency before the final assessments. Link each item to where the file lives.</p>
+  <div class="grid3" style="margin-bottom:8px">${Object.entries(DOMAINS).map(([k,d])=>`<div class="flat"><div class="row between small"><b>${d.name}</b><span class="muted">${by[k].length} of 4</span></div><div class="bar ${by[k].length>=4?"ok":""}" style="margin-top:8px"><i style="width:${Math.min(by[k].length/4,1)*100}%"></i></div></div>`).join("")}</div>
+  <h2 class="sec">Add evidence</h2>
+  <div class="panel">
+    <div class="grid2">
+      <div class="field"><label class="f" for="evt">Title</label><input class="in" id="evt" placeholder="e.g. Filmed session: build-up vs a high press"></div>
+      <div class="field"><label class="f" for="evl">Link to the file (Drive, video, document)</label><input class="in" id="evl" placeholder="https://"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label class="f" for="evd">Competency</label><select class="in" id="evd">${Object.entries(DOMAINS).map(([k,d])=>`<option value="${k}">${d.name}</option>`).join("")}</select></div>
+      <div class="field"><label class="f" for="evy">Type</label><select class="in" id="evy">${["Session plan","Video","Video review","Game plan","Player plan","Analysis report","Reflection","Document","Feedback from educator"].map(t=>`<option>${t}</option>`).join("")}</select></div>
+    </div>
+    <button class="btn" onclick="const t=$('#evt').value.trim();if(!t){toast('Add a title first');return;}S.evidence.push({id:uid(),t,d:$('#evd').value,type:$('#evy').value,link:$('#evl').value.trim(),date:new Date().toISOString().slice(0,10)});save();toast('Added to portfolio');render()">Add to portfolio</button>
+  </div>
+  ${Object.entries(DOMAINS).map(([k,d])=>`<h2 class="sec">${d.name}</h2><div class="panel">${by[k].length?by[k].map(e=>`<div class="item"><div><div style="font-weight:600">${e.link&&/^https?:\/\//.test(e.link)?`<a href="${esc(e.link)}" target="_blank" rel="noopener">${esc(e.t)}</a>`:esc(e.t)}</div><div class="small muted">${esc(e.type)}${e.date?", "+esc(niceDate(e.date)):""}</div></div><button class="xbtn" aria-label="Remove item" onclick="if(confirm('Remove this item?')){S.evidence=S.evidence.filter(x=>x.id!=='${e.id}');save();render()}">×</button></div>`).join(""):`<p class="muted small">Nothing yet. ${d.blurb}</p>`}</div>`).join("")}`;
+};
+
+/* ============================== SETTINGS ============================== */
+VIEWS.settings = () => `
+  <h1 class="page">Settings</h1>
+  <p class="lede">Personalise the coach profile and course dates. Everything is saved in this browser; export a backup before switching devices.</p>
+  <div class="panel">
+    <div class="grid2">
+      <div class="field"><label class="f" for="sn">Coach name</label><input class="in" id="sn" value="${esc(S.cfg.name)}" oninput="S.cfg.name=this.value;save();renderNav()"></div>
+      <div class="field"><label class="f" for="ss">B course start date</label><input class="in" id="ss" type="date" value="${esc(S.cfg.start)}" onchange="S.cfg.start=this.value;save()"></div>
+    </div>
+    <div class="field"><label class="f" for="sb">Background line</label><input class="in" id="sb" value="${esc(S.cfg.bg)}" oninput="S.cfg.bg=this.value;save()"></div>
+    <div class="grid2">
+      <div class="field"><label class="f" for="st">A License track</label><select class="in" id="st" onchange="S.cfg.track=this.value;save();renderNav()"><option ${S.cfg.track==="Senior"?"selected":""}>Senior</option><option ${S.cfg.track==="Youth"?"selected":""}>Youth</option></select></div>
+      <div class="field"><label class="f" for="sth">Appearance</label><select class="in" id="sth" onchange="S.cfg.theme=this.value;save();applyTheme()">${[["auto","Match device"],["light","Light"],["dark","Dark"]].map(([v,l])=>`<option value="${v}" ${S.cfg.theme===v?"selected":""}>${l}</option>`).join("")}</select></div>
+    </div>
+  </div>
+  <h2 class="sec">Backup</h2>
+  <div class="panel row">
+    <button class="btn" onclick="exportData()">Export backup</button>
+    <label class="btn ghost" style="cursor:pointer">Import backup<input type="file" accept="application/json" hidden onchange="importData(this.files[0])"></label>
+    <button class="btn ghost" onclick="if(confirm('Reset everything to the demo data? This clears all your changes.')){S=fresh();save();applyTheme();go('dash')}">Reset to demo data</button>
+  </div>`;
+function exportData(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="coaching-license-lab-backup.json"; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function importData(f){
+  if(!f) return; const r=new FileReader();
+  r.onload=()=>{ try{ const p=JSON.parse(r.result); if(!p||!p.model) throw 0; S=Object.assign(fresh(),p); save(); applyTheme(); toast("Backup imported"); go("dash"); }catch(e){ toast("That file isn't a Coaching License Lab backup"); } };
+  r.readAsText(f);
+}
+
+
+/* ============================== LEARN: COURSE + DIAGRAMS ============================== */
+const imgSrc = id => `images/${id}.png`;
+function figure(id){
+  const d = DIAGRAMS.find(x=>x.id===id); if(!d) return "";
+  return `<button class="figthumb noprint" onclick="lbOpen(['${id}'],0)" aria-label="Open diagram: ${esc(d.title)}">
+    <img src="${imgSrc(id)}" alt="" loading="lazy" onerror="this.style.display='none'">
+    <span><b>${esc(d.title)}</b><span class="tiny">Diagram, module ${d.mod}. Tap to enlarge.</span></span></button>`;
+}
+VIEWS.course = () => {
+  const m = MODULES.find(x=>x.n===UI.mod) || MODULES[0]; UI.mod = m.n;
+  const vid = (CONFIG.videos||{})[m.n];
+  const diags = DIAGRAMS.filter(d=>d.mod===m.n), ids = diags.map(d=>d.id);
+  return `
+  <h1 class="page">Course</h1>
+  <p class="lede">Eight short modules. Watch the video, look through the diagrams, then go straight to the tool or drill that puts it into practice.</p>
+  <div class="row" style="margin-bottom:18px">${MODULES.map(x=>`<button class="chip ${x.n===m.n?"on":""}" onclick="UI.mod=${x.n};render()">${x.n}. ${esc(x.title)}</button>`).join("")}</div>
+  <div class="panel">
+    <div class="row between"><h2 class="sec" style="margin:0">Module ${m.n}: ${esc(m.title)}</h2><span class="tiny">${m.n} of ${MODULES.length}</span></div>
+    <div class="video" style="margin-top:14px">${vid
+      ? `<iframe src="https://www.youtube-nocookie.com/embed/${esc(vid)}?rel=0" title="Module ${m.n} video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>`
+      : `<div class="video-empty"><b>Video in production</b><span class="small">The script for this module is in the repository. The video appears here once it’s approved.</span></div>`}</div>
+    <h3 style="margin-top:18px">Key points</h3>
+    <ul class="points">${m.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
+    ${diags.length?`<h3 style="margin-top:18px">Diagrams</h3><div class="thumbs">${diags.map((d,i)=>`<button class="thumb" onclick='lbOpen(${JSON.stringify(ids)},${i})'><img src="${imgSrc(d.id)}" alt="${esc(d.title)}" loading="lazy"><span>${esc(d.title)}</span></button>`).join("")}</div>`:""}
+    <div class="row" style="margin-top:18px">
+      ${m.tools.map(([v,l])=>`<button class="btn" onclick="go('${v}')">${l}</button>`).join("")}
+      ${m.drill?`<button class="btn ghost" onclick="UI.qdom='${m.drill}';UI.quiz=null;go('drill')">Drill: ${QDOMAINS[m.drill].name}</button>`:""}
+    </div>
+  </div>
+  <div class="row between" style="margin-top:14px">
+    <button class="btn ghost sm" ${m.n===1?"disabled":""} onclick="UI.mod=${m.n-1};go('course')">Previous module</button>
+    <button class="btn ghost sm" ${m.n===MODULES.length?"disabled":""} onclick="UI.mod=${m.n+1};go('course')">Next module</button>
+  </div>`;
+};
+VIEWS.diagrams = () => {
+  const ids = DIAGRAMS.map(d=>d.id);
+  return `
+  <h1 class="page">Diagrams</h1>
+  <p class="lede">Every diagram in one place, all built on the ${esc(CONFIG.team)} scenario so the numbers match across the course. Each one ends with the common mistakes to watch for.</p>
+  ${MODULES.map(m=>{const ds=DIAGRAMS.filter(d=>d.mod===m.n); if(!ds.length) return "";
+    return `<h2 class="sec">${m.n}. ${esc(m.title)}</h2><div class="thumbs">${ds.map(d=>`<button class="thumb" onclick='lbOpen(${JSON.stringify(ids)},${ids.indexOf(d.id)})'><img src="${imgSrc(d.id)}" alt="${esc(d.title)}" loading="lazy"><span>${esc(d.title)}</span></button>`).join("")}</div>`;}).join("")}`;
+};
+
+/* lightbox: arrows, keys, swipe, counter, preloading */
+const LB = {ids:[], i:0};
+function lbOpen(ids,i){ LB.ids=ids; LB.i=i; let el=$("#lb");
+  if(!el){ el=document.createElement("div"); el.id="lb"; el.className="lb"; el.setAttribute("role","dialog"); el.setAttribute("aria-modal","true");
+    el.innerHTML=`<button class="lb-x" onclick="lbClose()" aria-label="Close">Close</button><button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous diagram">‹</button><figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption></figure><button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Next diagram">›</button>`;
+    el.addEventListener("click",e=>{ if(e.target===el) lbClose(); });
+    let x0=null; el.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
+    el.addEventListener("touchend",e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>45) lbStep(dx<0?1:-1); x0=null; });
+    let wheelLock=false; el.addEventListener("wheel",e=>{ if(Math.abs(e.deltaX)>Math.abs(e.deltaY)&&Math.abs(e.deltaX)>25&&!wheelLock){ wheelLock=true; lbStep(e.deltaX>0?1:-1); setTimeout(()=>wheelLock=false,450);} },{passive:true});
+    document.body.appendChild(el); }
+  el.classList.add("open"); document.body.style.overflow="hidden"; lbShow(); el.querySelector(".lb-x").focus();
+}
+function lbShow(){ const id=LB.ids[LB.i], d=DIAGRAMS.find(x=>x.id===id);
+  $("#lbimg").src=imgSrc(id); $("#lbimg").alt=d.title;
+  $("#lbcap").innerHTML=`${esc(d.title)} (${LB.i+1} of ${LB.ids.length})<a href="${imgSrc(id)}" target="_blank" rel="noopener">Open full size</a>`;
+  const multi=LB.ids.length>1; document.querySelectorAll(".lb-nav").forEach(b=>b.style.visibility=multi?"visible":"hidden");
+  [LB.i-1,LB.i+1].forEach(j=>{ const k=(j+LB.ids.length)%LB.ids.length; const im=new Image(); im.src=imgSrc(LB.ids[k]); });
+}
+function lbStep(n){ if(LB.ids.length<2) return; LB.i=(LB.i+n+LB.ids.length)%LB.ids.length; lbShow(); }
+function lbClose(){ const el=$("#lb"); if(el) el.classList.remove("open"); document.body.style.overflow=""; }
+document.addEventListener("keydown",e=>{ const el=$("#lb"); if(!el||!el.classList.contains("open")) return;
+  if(e.key==="Escape") lbClose(); else if(e.key==="ArrowRight") lbStep(1); else if(e.key==="ArrowLeft") lbStep(-1); });
+
+/* ============================== INIT ============================== */
+load(); applyTheme();
+UI.view = (location.hash.slice(1) in VIEWS) ? location.hash.slice(1) : "dash";
+window.addEventListener("hashchange",()=>{ const v=location.hash.slice(1); if(v in VIEWS && v!==UI.view) go(v); });
+render();
+</script>
+</body>
+</html>
